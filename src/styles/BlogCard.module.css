@@ -1,9 +1,20 @@
 .card{
     background-color: white;
-    border-radius: 4px;
+    border-radius: 5px;
     margin: 0 0 5%;
-    width: 100%;
+    width: 43%;
     height: 100%;
+}
+
+.cardImg{
+    border-radius: 5px;
+}
+
+.cardContentText{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 340px;
 }
 
 .cardContentBottom{
@@ -29,4 +40,31 @@
     float: right;
     top: 0;
     height: 100%;
+}
+
+
+/* Mobile */
+@media (max-width: 1100px) {
+    .content {
+      padding: 4rem;
+    }
+  
+    .grid {
+      margin-bottom: 120px;
+      max-width: 320px;
+      text-align: center;
+    }
+  
+    .main {
+      flex-direction: column;
+    }
+  
+    .card {
+      padding: 1rem 2.5rem;
+      width: 100%;
+    }
+  
+    .card h2 {
+      margin-bottom: 0.5rem;
+    }
 }

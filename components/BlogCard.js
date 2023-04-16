@@ -18,11 +18,14 @@ export default function BlogPost({title,author,coverPhoto,dataPublished,slug}){
                 width="150px"
                 image={coverPhoto.url}
                 alt=""
+                className={styles.cardImg}
                 />
             </Link>
             <CardContent>
                 <Typography gutterBottom variant='h4' component="div">
-                    {title}
+                    <div className={styles.cardContentText}>
+                        {title}
+                    </div>
                 </Typography>
                 <div className={styles.cardContentBottom}>
                     
