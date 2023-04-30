@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../src/styles/Slug.module.css';
+import styles from '@/styles/Slug.module.css'
 
 import { GraphQLClient , gql } from 'graphql-request'
 
@@ -69,17 +69,23 @@ export default function BlogPost({post}){
   return (
     <main className={styles.blogContainer}>
         <div className={styles.inner_blogContainer}>
-        <img src={post.coverPhoto.url} className={styles.cover} alt="" />
-        <div className={styles.title}>
-            <img src = {post.author.avatar.url} alt="" />
+          {/* <img src={post.coverPhoto.url} className={styles.cover} alt="" /> */}
+          
+          
+          <div className={styles.mainTitleArea}>
+            <h1 className={styles.mainTitle}>{post.title}</h1>
+          </div>
+          <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html}}></div>
+        </div>
+
+        <div className={styles.authorArea}>
+            <img className={styles.avatarImg}   src = {post.author.avatar.url} alt="" />
             <div className={styles.authtext}>
               <h6> By {post.author.name}</h6>
               <h6 className={styles.date}>{post.dataPublished}</h6>
             </div>
         </div>
-        <h2>{post.title}</h2>
-        <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html}}></div>
-        </div>
+
     </main>
   )
 }

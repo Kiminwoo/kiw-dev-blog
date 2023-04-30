@@ -14,7 +14,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 340px;
+    width: 100%;
 }
 
 .cardContentBottom{
