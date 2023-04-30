@@ -34,12 +34,15 @@
     align-items: center;    
     top: 0;
     height: 100%;
+    position: relative;
+    left: -1%;
 }
 
 .cardContentBottomRight {
     float: right;
-    top: 0;
+    top: 14px;
     height: 100%;
+    position: relative;
 }
 
 

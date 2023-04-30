@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
+import styles from '../src/styles/Slug.module.css';
+
 import { GraphQLClient , gql } from 'graphql-request'
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
@@ -66,7 +67,8 @@ export async function getStaticProps({params}){
 
 export default function BlogPost({post}){
   return (
-    <main className={styles.blog}>
+    <main className={styles.blogContainer}>
+        <div className={styles.inner_blogContainer}>
         <img src={post.coverPhoto.url} className={styles.cover} alt="" />
         <div className={styles.title}>
             <img src = {post.author.avatar.url} alt="" />
@@ -77,6 +79,7 @@ export default function BlogPost({post}){
         </div>
         <h2>{post.title}</h2>
         <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html}}></div>
+        </div>
     </main>
   )
 }

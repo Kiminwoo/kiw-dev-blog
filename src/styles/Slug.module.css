@@ -1,0 +1,8 @@
+.blogContainer{
+    position: relative;
+}
+
+.inner_blogContainer{
+    position: absolute;
+    left: 50%;
+}
