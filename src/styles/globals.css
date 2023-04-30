@@ -105,3 +105,17 @@ a {
     color-scheme: dark;
   }
 }
+
+@font-face {
+  font-family: "googleSigmar";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../assets/Sigmar/Sigmar-Regular.ttf");
+}
+
+@font-face {
+  font-family: "googleChivoMono";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../assets/Chivo_Mono/ChivoMono-VariableFont_wght.ttf");
+}

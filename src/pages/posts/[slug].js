@@ -75,7 +75,7 @@ export default function BlogPost({post}){
           <div className={styles.mainTitleArea}>
             <h1 className={styles.mainTitle}>{post.title}</h1>
           </div>
-          <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html}}></div>
+          <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html.replaceAll("<p></p>","<br/>")}}></div>
         </div>
 
         <div className={styles.authorArea}>

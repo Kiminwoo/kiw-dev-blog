@@ -4,6 +4,7 @@
     margin: 0 0 5%;
     width: 43%;
     height: 100%;
+    font-family: "googleSigmar";
 }
 
 .cardImg{
@@ -15,6 +16,7 @@
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
+    font-family: "googleSigmar";
 }
 
 .cardContentBottom{

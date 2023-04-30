@@ -49,3 +49,14 @@
     display: block;
     word-wrap: break-word;
 }
+
+ 
+.content > blockquote {
+    margin: 3% 0 3% 0;
+}
+
+.content > blockquote {
+    padding: 15px;
+    background: #eee;
+    border-radius: 5px;
+}

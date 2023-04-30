@@ -8,6 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Avatar } from '@mui/material';
 
+
 export default function BlogPost({title,author,coverPhoto,dataPublished,slug}){
     return (
         <div className={styles.card}>

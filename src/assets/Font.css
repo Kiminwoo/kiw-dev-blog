@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "googleSigmar";
+    font-style: normal;
+    font-weight: 100;
+    src: url("./Sigmar/Sigmar-Regular.ttf");
+}
+
+@font-face {
+    font-family: "googleChivoMono";
+    font-style: normal;
+    font-weight: 100;
+    src: url("./Chivo_Mono/ChivoMono-VariableFont_wght.ttf");
+}
