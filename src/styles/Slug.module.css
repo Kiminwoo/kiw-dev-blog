@@ -28,6 +28,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-family: "googleSigmar";
 }
 .avatarImg{
     height: 36px;
@@ -59,4 +60,18 @@
     padding: 15px;
     background: #eee;
     border-radius: 5px;
+}
+
+.byText{
+    font-size: x-small !important;
+    padding: 0 5% 0 0;
+}
+
+.authtext{
+    display: flex;
+    flex-direction: row;
+}
+
+.date{
+    margin : auto 0 auto auto;
 }

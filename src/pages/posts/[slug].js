@@ -81,11 +81,11 @@ export default function BlogPost({post}){
         <div className={styles.authorArea}>
             <img className={styles.avatarImg}   src = {post.author.avatar.url} alt="" />
             <div className={styles.authtext}>
-              <h6> By {post.author.name}</h6>
-              <h6 className={styles.date}>{post.dataPublished}</h6>
+              <span className={styles.byText}> By </span>
+              <span> {post.author.name}</span>
             </div>
+            <h6 className={styles.date}>{post.dataPublished}</h6>
         </div>
-
     </main>
   )
 }
