@@ -51,6 +51,19 @@
     word-wrap: break-word;
 }
 
+.content a {
+    color: blue;
+    text-decoration: underline lightblue;
+  }
+  
+  .content a:focus,
+  .content a:hover {
+    display: inline-block;
+    color: lightblue;
+    transform: translateY(2px);
+    transition: 0.7s;
+  }
+
  
 .content > blockquote {
     margin: 3% 0 3% 0;
