@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { GraphQLClient , gql } from 'graphql-request'
 import BlogCard  from '../../components/BlogCard'
+import HeaderBar  from '../../components/HeaderBar'
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -52,6 +53,9 @@ export default function Home({posts}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <HeaderBar />
+
       <main className={styles.main}> 
 
         {
