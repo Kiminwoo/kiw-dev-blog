@@ -14,7 +14,7 @@ export default function BlogPost({ title, author, coverPhoto, dataPublished, slu
     if(postChk == "none"){
         return(
         <div className={styles.noShow}>
-            <h1>검색 결과가 없습니다.</h1>
+            <h1>no results were found for your search.</h1>
         </div>
         )
     } else {

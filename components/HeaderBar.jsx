@@ -105,17 +105,8 @@ function ResponsiveAppBar ({postList , getPostDate}) {
       const searched = postList.posts.filter((post)=>{
           return post.title.toLowerCase().includes(event.target.value.toLowerCase());
       });
-
-      console.log("searchedItem" +JSON.stringify(searched) )
       
-      getPostDate({"posts":searched})
-       
-
-      // const searchResults = globalPosts.postState.filter((post)=>{
-      //   return post.title.toLowerCase().startsWidth(userInput);
-      // });
-
-
+      getPostDate({"posts":searched});
     }
   }
 

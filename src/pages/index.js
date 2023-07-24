@@ -1,8 +1,9 @@
-import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
-import { GraphQLClient , gql } from 'graphql-request'
-import BlogCard  from '../../components/BlogCard.jsx'
-import HeaderBar  from '../../components/HeaderBar'
+import Head from 'next/head';
+import styles from '@/styles/Home.module.css';
+
+import { GraphQLClient , gql } from 'graphql-request';
+import BlogCard  from '../../components/BlogCard.jsx';
+import HeaderBar  from '../../components/HeaderBar.jsx';
 import React , {useState , useEffect} from 'react';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
@@ -49,9 +50,9 @@ export async function getStaticProps(){
 export default function Home({posts}) {
 
   const [postState,setPostState] = useState({posts});
-  
+
   useEffect(()=>{
-    getPostDate(postState)
+    getPostDate(postState);
   })
   
   const getPostDate = (postState) =>{
@@ -67,7 +68,7 @@ export default function Home({posts}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HeaderBar postList = {postState} getPostDate = {getPostDate}/>
+      <HeaderBar postList = {{posts}} getPostDate = {getPostDate}/>
 
       <main className={styles.main}> 
 
