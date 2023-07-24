@@ -50,6 +50,9 @@
   opacity: 1;
 }
 
+.noShow{
+  
+}
 
 /* Mobile */
 @media (max-width: 1100px) {

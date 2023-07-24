@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { GraphQLClient , gql } from 'graphql-request'
-import BlogCard  from '../../components/BlogCard'
+import BlogCard  from '../../components/BlogCard.jsx'
 import HeaderBar  from '../../components/HeaderBar'
+import React , {useState , useEffect} from 'react';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -33,6 +34,7 @@ const QUERY = gql`
 
 export async function getStaticProps(){
   const { posts } = await graphcms.request(QUERY);
+  
   return {
 
     props: {
@@ -45,6 +47,17 @@ export async function getStaticProps(){
 }
 
 export default function Home({posts}) {
+
+  const [postState,setPostState] = useState({posts});
+  
+  useEffect(()=>{
+    getPostDate(postState)
+  })
+  
+  const getPostDate = (postState) =>{
+    setPostState(postState);
+  }
+
   return (
     <div className={styles.grid}>
       <Head>
@@ -54,12 +67,13 @@ export default function Home({posts}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HeaderBar />
+      <HeaderBar postList = {postState} getPostDate = {getPostDate}/>
 
       <main className={styles.main}> 
 
-        {
-            posts.map((post)=>(
+        {     
+              postState.posts.length != 0 ? 
+              postState.posts.map((post)=>(
                 <BlogCard
                   title = {post.title}
                   author = {post.author}
@@ -67,8 +81,12 @@ export default function Home({posts}) {
                   key ={post.id}
                   dataPublished = {post.dataPublished}
                   slug = {post.slug}
+                  postChk = {"show"}
                 />
-            ))          
+              )) :
+                <BlogCard
+                  postChk = {"none"}
+                />
 
         }
       </main>
