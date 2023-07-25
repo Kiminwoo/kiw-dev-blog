@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '@/styles/Slug.module.css'
 
 import { GraphQLClient , gql } from 'graphql-request'
+import { useEffect , useState } from 'react';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -66,26 +67,42 @@ export async function getStaticProps({params}){
 }
 
 export default function BlogPost({post}){
-  return (
-    <main className={styles.blogContainer}>
-        <div className={styles.inner_blogContainer}>
-          {/* <img src={post.coverPhoto.url} className={styles.cover} alt="" /> */}
-          
-          
-          <div className={styles.mainTitleArea}>
-            <h1 className={styles.mainTitle}>{post.title}</h1>
-          </div>
-          <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html.replaceAll("<p></p>","<br/>")}}></div>
-        </div>
 
-        <div className={styles.authorArea}>
-            <img className={styles.avatarImg}   src = {post.author.avatar.url} alt="" />
-            <div className={styles.authtext}>
-              <span className={styles.byText}> By </span>
-              <span> {post.author.name}</span>
+  const [mounted,setMounted] = useState(false)
+
+  useEffect(()=>{
+    setMounted(true)
+  },[])
+  if(mounted){
+    return (
+    
+      <main className={styles.blogContainer}>
+  
+        <head>
+            <title>{post.title} | daliyBug</title>
+            <meta name="description" content={post.content.html.replaceAll("<p></p>","<br/>")}/>
+            <meta name="keywords" content={post.title}/>
+            <meta property="og:title" content={post.title}/>
+            <meta property="og:image" content={post.coverPhoto.url}/>
+            <meta property="og:description" content={post.content.html.replaceAll("<p></p>","<br/>")}/>
+        </head>
+  
+          <div className={styles.inner_blogContainer}>
+            <div className={styles.mainTitleArea}>
+              <h1 className={styles.mainTitle}>{post.title}</h1>
             </div>
-            <h6 className={styles.date}>{post.dataPublished}</h6>
-        </div>
-    </main>
-  )
+            <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html.replaceAll("<p></p>","<br/>")}}></div>
+          </div>
+  
+          <div className={styles.authorArea}>
+              <img className={styles.avatarImg}   src = {post.author.avatar.url} alt="" />
+              <div className={styles.authtext}>
+                <span className={styles.byText}> By </span>
+                <span> {post.author.name}</span>
+              </div>
+              <h6 className={styles.date}>{post.dataPublished}</h6>
+          </div>
+      </main>
+    )
+  }
 }
