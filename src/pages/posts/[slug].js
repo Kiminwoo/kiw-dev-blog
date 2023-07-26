@@ -78,14 +78,14 @@ export default function BlogPost({post}){
     
       <main className={styles.blogContainer}>
   
-        <head>
+        <Head>
             <title>{post.title} | daliyBug</title>
             <meta name="description" content={post.content.html.replaceAll("<p></p>","<br/>")}/>
             <meta name="keywords" content={post.title}/>
             <meta property="og:title" content={post.title}/>
             <meta property="og:image" content={post.coverPhoto.url}/>
             <meta property="og:description" content={post.content.html.replaceAll("<p></p>","<br/>")}/>
-        </head>
+        </Head>
   
           <div className={styles.inner_blogContainer}>
             <div className={styles.mainTitleArea}>
