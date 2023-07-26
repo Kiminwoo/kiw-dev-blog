@@ -69,11 +69,12 @@ export async function getStaticProps({params}){
 export default function BlogPost({post}){
 
   const [mounted,setMounted] = useState(false)
+  const isServerSide = typeof window === "undefined";
 
   useEffect(()=>{
     setMounted(true)
   },[])
-  if(mounted){
+  if(!isServerSide && mounted){
     return (
       <div>
         <Head>
