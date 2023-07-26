@@ -69,19 +69,22 @@ export async function getStaticProps({params}){
 export default function BlogPost({post}){
 
   const [mounted,setMounted] = useState(false)
+  const [postState,setPostState] = useState({}); 
   const isServerSide = typeof window === "undefined";
 
   useEffect(()=>{
-    setMounted(true)
+    setMounted(true);
+    setPostState({post});
   },[])
+
   if(!isServerSide && mounted){
     return (
       <div>
         <Head>
-            <title> test 1 | daliyBug</title>
-            <meta property="og:title" content="test 1"/>
-            <meta property="og:image" content="https://media.graphassets.com/Y6mn3S0SYObWIcolalvm"/>
-            <meta property="og:description" content="test 1 descripttion"/>
+            <title> {postState.post.title} | daliyBug</title>
+            <meta property="og:title" content={postState.post.title}/>
+            <meta property="og:image" content={postState.post.coverPhoto.url}/>
+            <meta property="og:description" content={postState.post.content.html.replaceAll("<p></p>","<br/>")} />
         </Head>
       
         <main className={styles.blogContainer}>
