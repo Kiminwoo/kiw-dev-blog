@@ -47,7 +47,7 @@ export async function getStaticPaths(){
 
   return{
     paths : posts.map((post) => ({ params: {slug : post.slug}})),
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -69,23 +69,22 @@ export async function getStaticProps({params}){
 export default function BlogPost({post}){
 
   const [mounted,setMounted] = useState(false)
-  const [postState,setPostState] = useState({}); 
   const isServerSide = typeof window === "undefined";
 
   useEffect(()=>{
     setMounted(true);
-    setPostState({post});
   },[])
 
   if(!isServerSide && mounted){
+
     return (
       <div>
         <Head>
-            <title> {postState.post.title} | daliyBug</title>
+            <title> {post.title} | daliyBug</title>
             <meta name="description" content="postDetailPage"></meta>
-            <meta property="og:title" content={postState.post.title}/>
-            <meta property="og:image" content={postState.post.coverPhoto.url}/>
-            <meta property="og:description" content={postState.post.content.html.replaceAll("<p></p>","<br/>")} />
+            <meta property="og:title" content={post.title}/>
+            <meta property="og:image" content={post.coverPhoto.url}/>
+            <meta property="og:description" content={post.content.html.replaceAll("<p></p>","<br/>")} />
         </Head>
       
         <main className={styles.blogContainer}>

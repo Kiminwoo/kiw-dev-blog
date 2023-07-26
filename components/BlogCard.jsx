@@ -22,14 +22,6 @@ export default function BlogPost({ title, author, coverPhoto, dataPublished, slu
         
             <div className={styles.card}>
 
-                {   
-                    // <Head>
-                    //     <meta property="og:title" content={title}/>
-                    //     <meta property="og:image" content={coverPhoto.url}/>
-                    //     <meta property="og:description" content={title}/>
-                    // </Head>
-                }
-
                 <Link href={"/posts/" + slug}>
                     <CardMedia
                         component="img"
