@@ -75,34 +75,33 @@ export default function BlogPost({post}){
   },[])
   if(mounted){
     return (
-    
-      <main className={styles.blogContainer}>
-  
+      <div>
         <Head>
             <title>{post.title} | daliyBug</title>
-            <meta name="description" content={post.content.html.replaceAll("<p></p>","<br/>")}/>
-            <meta name="keywords" content={post.title}/>
             <meta property="og:title" content={post.title}/>
             <meta property="og:image" content={post.coverPhoto.url}/>
             <meta property="og:description" content={post.content.html.replaceAll("<p></p>","<br/>")}/>
         </Head>
-  
-          <div className={styles.inner_blogContainer}>
-            <div className={styles.mainTitleArea}>
-              <h1 className={styles.mainTitle}>{post.title}</h1>
-            </div>
-            <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html.replaceAll("<p></p>","<br/>")}}></div>
-          </div>
-  
-          <div className={styles.authorArea}>
-              <img className={styles.avatarImg}   src = {post.author.avatar.url} alt="" />
-              <div className={styles.authtext}>
-                <span className={styles.byText}> By </span>
-                <span> {post.author.name}</span>
+      
+        <main className={styles.blogContainer}>
+    
+            <div className={styles.inner_blogContainer}>
+              <div className={styles.mainTitleArea}>
+                <h1 className={styles.mainTitle}>{post.title}</h1>
               </div>
-              <h6 className={styles.date}>{post.dataPublished}</h6>
-          </div>
-      </main>
+              <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html.replaceAll("<p></p>","<br/>")}}></div>
+            </div>
+    
+            <div className={styles.authorArea}>
+                <img className={styles.avatarImg}   src = {post.author.avatar.url} alt="" />
+                <div className={styles.authtext}>
+                  <span className={styles.byText}> By </span>
+                  <span> {post.author.name}</span>
+                </div>
+                <h6 className={styles.date}>{post.dataPublished}</h6>
+            </div>
+        </main>
+      </div>
     )
   }
 }
