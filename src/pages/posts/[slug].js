@@ -78,10 +78,10 @@ export default function BlogPost({post}){
     return (
       <div>
         <Head>
-            <title>{post.title} | daliyBug</title>
-            <meta property="og:title" content={post.title}/>
-            <meta property="og:image" content={post.coverPhoto.url}/>
-            <meta property="og:description" content={post.content.html.replaceAll("<p></p>","<br/>")}/>
+            <title> test 1 | daliyBug</title>
+            <meta property="og:title" content="test 1"/>
+            <meta property="og:image" content="https://media.graphassets.com/Y6mn3S0SYObWIcolalvm"/>
+            <meta property="og:description" content="test 1 descripttion"/>
         </Head>
       
         <main className={styles.blogContainer}>
