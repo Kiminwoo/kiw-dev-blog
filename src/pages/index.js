@@ -63,9 +63,10 @@ export default function Home({posts}) {
     <div className={styles.grid}>
       <Head>
         <title>daliyBug</title>
-        <meta name="description" content="daliyBug" />
+        <meta name="description" content="postMainPage" />
         <meta name="author" content="inwookim" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:image" content= "https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory2.daumcdn.net%2Ftistory%2F2899385%2Fattach%2F3c560e9b7b7c4d6fb3eefa0a05a944fb"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

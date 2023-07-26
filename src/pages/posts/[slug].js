@@ -82,6 +82,7 @@ export default function BlogPost({post}){
       <div>
         <Head>
             <title> {postState.post.title} | daliyBug</title>
+            <meta name="description" content="postDetailPage"></meta>
             <meta property="og:title" content={postState.post.title}/>
             <meta property="og:image" content={postState.post.coverPhoto.url}/>
             <meta property="og:description" content={postState.post.content.html.replaceAll("<p></p>","<br/>")} />
