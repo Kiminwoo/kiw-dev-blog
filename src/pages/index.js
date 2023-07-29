@@ -77,6 +77,7 @@ export default function Home({posts}) {
         {     
               postState.posts.length != 0 ? 
               postState.posts.map((post)=>(
+                
                 <BlogCard
                   title = {post.title}
                   author = {post.author}

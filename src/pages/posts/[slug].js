@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import styles from '@/styles/Slug.module.css'
 
 import { GraphQLClient , gql } from 'graphql-request'
-import { useEffect , useState } from 'react';
+import { Fragment, useEffect , useState } from 'react';
+import HeadMeta from '../../../components/HeadMeta.jsx';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -44,7 +44,7 @@ const SLUGLIST = gql`
 
 export async function getStaticPaths(){
   const {posts} = await graphcms.request(SLUGLIST);
-
+  console.log("post {} ", posts)
   return{
     paths : posts.map((post) => ({ params: {slug : post.slug}})),
     fallback: false,
@@ -52,6 +52,9 @@ export async function getStaticPaths(){
 }
 
 export async function getStaticProps({params}){
+  console.log("params ", params)
+
+  
   const slug = params.slug;
   const data = await graphcms.request(QUERY,{slug});
   const post = data.post;
@@ -66,27 +69,36 @@ export async function getStaticProps({params}){
   };
 }
 
+// export async function getServerSideProps({params}) {
+
+//   const slug = params.slug;
+//   const data = await graphcms.request(QUERY,{slug});
+//   const post = data.post;
+//   console.log("post" + post)
+//   return {
+
+//     props: {
+//       post,
+//     },
+
+//   };
+
+// }
+
 export default function BlogPost({post}){
 
-  const [mounted,setMounted] = useState(false)
-  const isServerSide = typeof window === "undefined";
+  // const [mounted,setMounted] = useState(false)
+  // const isServerSide = typeof window === "undefined";
 
-  useEffect(()=>{
-    setMounted(true);
-  },[])
-
-  if(!isServerSide && mounted){
+  // useEffect(()=>{
+  //   setMounted(true);
+  // },[])
 
     return (
-      <div>
-        <Head>
-            <title> {post.title} | daliyBug</title>
-            <meta name="description" content="postDetailPage"></meta>
-            <meta property="og:title" content={post.title}/>
-            <meta property="og:image" content={post.coverPhoto.url}/>
-            <meta property="og:description" content={post.content.html.replaceAll("<p></p>","<br/>")} />
-        </Head>
-      
+      <Fragment>
+        <div>
+          <HeadMeta title={post.title} description= {post.content.html.replaceAll("<p></p>","<br/>")} image={post.coverPhoto.url}></HeadMeta>
+        </div>
         <main className={styles.blogContainer}>
     
             <div className={styles.inner_blogContainer}>
@@ -105,7 +117,7 @@ export default function BlogPost({post}){
                 <h6 className={styles.date}>{post.dataPublished}</h6>
             </div>
         </main>
-      </div>
+      </Fragment>
     )
-  }
+  
 }
