@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,18 +15,32 @@ import AdbIcon from '@mui/icons-material/Adb';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
- 
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
+import { isMobile } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 
 const pages = ['FE-SKILL'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar ({postList , getPostDate}) {
+function ResponsiveAppBar({ postList, getPostDate }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [userInput,setUserInput] = useState({
-    searchItem:"",
+  const [userInput, setUserInput] = useState({
+    searchItem: "",
+  });
+
+  const isDesktop = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
+
+  const isTablet = useMediaQuery({
+    query: "(min-width:768px) and (min-width:1023px)",
+  });
+
+  const isMobile = useMediaQuery({
+    query: "(max-width:767px)",
   });
 
   const handleOpenNavMenu = (event) => {
@@ -98,19 +112,27 @@ function ResponsiveAppBar ({postList , getPostDate}) {
     },
   }));
 
-  const handleChange = (prop) => (event) =>{
-    
-    if(event.key === 'Enter'){
+  const handleChange = (prop) => (event) => {
 
-      const searched = postList.posts.filter((post)=>{
-          return post.title.toLowerCase().includes(event.target.value.toLowerCase());
+    if (event.key === 'Enter') {
+
+      const searched = postList.posts.filter((post) => {
+        return post.title.toLowerCase().includes(event.target.value.toLowerCase());
       });
-      
-      getPostDate({"posts":searched});
+
+      getPostDate({ "posts": searched });
     }
   }
 
-  return (
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(()=>{
+    setMounted(true);
+  },[]);
+
+  return ( 
+
+    mounted && 
     <ThemeProvider theme={theme}>
 
       <AppBar position="fixed" disablegutters="true" >
@@ -202,19 +224,22 @@ function ResponsiveAppBar ({postList , getPostDate}) {
               ))}
             </Box>
 
+
+            {
+              isDesktop &&
+
+
             <Box sx={{ flexGrow: 0 }}>
               <Search>
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ 'aria-label': 'search' }}
-                  onKeyDown={handleChange("searchItem")}
-
-                />
+                <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} /> 
               </Search>
             </Box>
+
+            }
+            
           </Toolbar>
         </Container>
       </AppBar>
