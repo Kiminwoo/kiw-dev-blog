@@ -3,6 +3,8 @@ import styles from '@/styles/Slug.module.css'
 import { GraphQLClient , gql } from 'graphql-request'
 import { Fragment, useEffect , useState } from 'react';
 import HeadMeta from '../../../components/HeadMeta.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faReact} from "@fortawesome/free-brands-svg-icons";
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -68,41 +70,27 @@ export async function getStaticProps({params}){
   };
 }
 
-// export async function getServerSideProps({params}) {
-
-//   const slug = params.slug;
-//   const data = await graphcms.request(QUERY,{slug});
-//   const post = data.post;
-//   console.log("post" + post)
-//   return {
-
-//     props: {
-//       post,
-//     },
-
-//   };
-
-// }
-
 export default function BlogPost({post}){
-
-  // const [mounted,setMounted] = useState(false)
-  // const isServerSide = typeof window === "undefined";
-
-  // useEffect(()=>{
-  //   setMounted(true);
-  // },[])
 
     return (
       <Fragment>
+
         <div>
           <HeadMeta title={post.title} description= {post.content.html.replaceAll("<p></p>","<br/>")} image={post.coverPhoto.url}></HeadMeta>
         </div>
+
         <main className={styles.blogContainer}>
     
             <div className={styles.inner_blogContainer}>
               <div className={styles.mainTitleArea}>
-                <h1 className={styles.mainTitle}>{post.title}</h1>
+                <h1 className={styles.mainTitle}>
+                  {/* {
+                  post.slug.includes("react") ? 
+                  <FontAwesomeIcon icon={faReact} />  : ""             
+                  } */}
+                  
+                  {post.title.replaceAll("[react]","").replaceAll("[next.js]","").substring(1)}
+                </h1>
               </div>
               <div className={styles.content} dangerouslySetInnerHTML={ {__html:post.content.html.replaceAll("<p></p>","<br/>")}}></div>
             </div>

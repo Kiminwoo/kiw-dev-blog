@@ -109,7 +109,7 @@ a {
 @font-face {
   font-family: "googleSigmar";
   font-style: normal;
-  font-weight: 100;
+  font-weight: 400;
   src: url("../assets/Sigmar/Sigmar-Regular.ttf");
 }
 
@@ -118,4 +118,11 @@ a {
   font-style: normal;
   font-weight: 100;
   src: url("../assets/Chivo_Mono/ChivoMono-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
