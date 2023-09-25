@@ -4,7 +4,7 @@ import styles from '@/styles/Home.module.css';
 import { GraphQLClient , gql } from 'graphql-request';
 import BlogCard  from '../../components/BlogCard.jsx';
 import HeaderBar  from '../../components/HeaderBar.jsx';
-import React , {useState , useEffect} from 'react';
+import React , {useState , useEffect, useRef} from 'react';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -36,6 +36,7 @@ const QUERY = gql`
 export async function getStaticProps(){
   const { posts } = await graphcms.request(QUERY);
   
+  // 최신 내용 정렬
   posts.sort(function(a,b){
     return new Date(b.dataPublished) - new Date(a.dataPublished);
   })
@@ -62,6 +63,24 @@ export default function Home({posts}) {
   const getPostDate = (postState) =>{
     setPostState(postState);
   }
+
+  // const searchInput = useRef();
+
+  // const keyDown = (event) => {
+  //   const code = event.keyCode;
+  //   if(event.ctrlKey && ( event.key === "Q" || event.key === "q")){
+  //     console.log("ctrl k press");
+  //     searchInput.current && searchInput.current.focus();
+  //   }
+  // }
+  
+  // useEffect(()=>{
+  //   window.addEventListener("keydown",keyDown);
+  //   return() => {
+  //     window.addEventListener("keydown",keyDown);
+  //   }
+  // }, []);
+
 
   return (
     <div className={styles.grid}>
@@ -97,7 +116,6 @@ export default function Home({posts}) {
                 <BlogCard
                   postChk = {"none"}
                 />
-
         }
       </main>
     </div>

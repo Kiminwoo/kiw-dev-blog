@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -20,6 +20,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import { isMobile } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive';
+import Paper from '@mui/material/Paper';
+
 
 const pages = ['FE-SKILL'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -77,11 +79,11 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.2),
     },
-    marginLeft: 0,
-    width: '100%',
+    fontFamily: 'googleSigmar',
+    marginLeft: 16,
+    width: '105%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
-      width: 'auto',
     },
   }));
 
@@ -110,6 +112,10 @@ function ResponsiveAppBar({ postList, getPostDate }) {
         },
       },
     },
+    '& ::placeholder' : {
+      fontFamily: "googleSigmar",
+      fontWeight: 40,
+    }
   }));
 
   const handleChange = (prop) => (event) => {
@@ -129,6 +135,23 @@ function ResponsiveAppBar({ postList, getPostDate }) {
   useEffect(()=>{
     setMounted(true);
   },[]);
+
+  const searchInput = useRef();
+
+  const keyDown = (event) => {
+    const code = event.keyCode;
+    if(event.ctrlKey && ( event.key === "Q" || event.key === "q")){
+      console.log("ctrl k press");
+      searchInput.current.click();
+    }
+  }
+  
+  useEffect(()=>{
+    window.addEventListener("keydown",keyDown);
+    return() => {
+      window.addEventListener("keydown",keyDown);
+    }
+  }, []);
 
   return ( 
 
@@ -234,7 +257,18 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
-                <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} /> 
+                <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} > 
+                </StyledInputBase>
+                <Paper elevation={1} square={false} sx={{
+                  position : 'absolute',
+                  float: 'right',
+                  top: '16%',
+                  right: '3%',
+                  width: '34%',
+                  textAlign: 'center'
+                }}
+                  
+                > Ctrl Q </Paper>
               </Search>
             </Box>
 
