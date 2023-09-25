@@ -112,7 +112,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
         },
       },
     },
-    '& ::placeholder' : {
+    '& ::placeholder': {
       fontFamily: "googleSigmar",
       fontWeight: 40,
     }
@@ -132,30 +132,30 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
   const [mounted, setMounted] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setMounted(true);
-  },[]);
+  }, []);
 
   const searchInput = useRef();
 
   const keyDown = (event) => {
     const code = event.keyCode;
-    if(event.ctrlKey && ( event.key === "Q" || event.key === "q")){
+    if (event.ctrlKey && (event.key === "Q" || event.key === "q")) {
       console.log("ctrl k press");
       searchInput.current.click();
     }
   }
-  
-  useEffect(()=>{
-    window.addEventListener("keydown",keyDown);
-    return() => {
-      window.addEventListener("keydown",keyDown);
+
+  useEffect(() => {
+    window.addEventListener("keydown", keyDown);
+    return () => {
+      window.addEventListener("keydown", keyDown);
     }
   }, []);
 
-  return ( 
+  return (
 
-    mounted && 
+    mounted &&
     <ThemeProvider theme={theme}>
 
       <AppBar position="fixed" disablegutters="true" >
@@ -249,31 +249,44 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
 
             {
-              isDesktop &&
+              !isMobile &&
 
 
-            <Box sx={{ flexGrow: 0 }}>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} > 
-                </StyledInputBase>
-                <Paper elevation={1} square={false} sx={{
-                  position : 'absolute',
-                  float: 'right',
-                  top: '16%',
-                  right: '3%',
-                  width: '34%',
-                  textAlign: 'center'
-                }}
+              <Box sx={{ flexGrow: 0 }}>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} >
+                  </StyledInputBase>
                   
-                > Ctrl Q </Paper>
-              </Search>
-            </Box>
+                  <Paper elevation={1} square={false} sx={{
+                    position: 'absolute',
+                    float: 'right',
+                    top: '16%',
+                    right: '16%',
+                    width: '22%',
+                    textAlign: 'center'
+                  }}
+
+                  > Ctrl </Paper>
+
+                  <Paper elevation={1} square={false} sx={{
+                    position: 'absolute',
+                    float: 'right',
+                    top: '16%',
+                    right: '2%',
+                    width: '12%',
+                    textAlign: 'center'
+                  }}
+
+                  >Q</Paper>
+
+                </Search>
+              </Box>
 
             }
-            
+
           </Toolbar>
         </Container>
       </AppBar>
