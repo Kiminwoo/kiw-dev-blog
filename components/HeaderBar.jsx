@@ -80,7 +80,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
       backgroundColor: alpha(theme.palette.common.white, 0.2),
     },
     fontFamily: 'googleSigmar',
-    marginLeft: 16,
+    // marginLeft: 16,
     width: '105%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
@@ -106,7 +106,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
+        width: '15ch',
         '&:focus': {
           width: '20ch',
         },
@@ -216,8 +216,17 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 ))}
               </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
+            
+            {
+              !isMobile &&
+               <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> 
+
+            }
+
+            {
+              !isMobile &&
+               
+              <Typography
               variant="h5"
               noWrap
               component="a"
@@ -235,6 +244,8 @@ function ResponsiveAppBar({ postList, getPostDate }) {
             >
               dailyBug
             </Typography>
+            }
+
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                 <Button
@@ -249,9 +260,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
 
             {
-              !isMobile &&
-
-
+              
               <Box sx={{ flexGrow: 0 }}>
                 <Search>
                   <SearchIconWrapper>
