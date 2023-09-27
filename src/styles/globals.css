@@ -126,3 +126,10 @@ a {
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "googleBlackHanSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/Black_Han_Sans/BlackHanSans-Regular.ttf");
+}

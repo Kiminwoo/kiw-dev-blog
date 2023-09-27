@@ -21,6 +21,7 @@ import { grey } from '@mui/material/colors';
 import { isMobile } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive';
 import Paper from '@mui/material/Paper';
+import styles from '../src/styles/Header.module.css?after';
 
 
 const pages = ['FE-SKILL'];
@@ -176,6 +177,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 color: 'inherit',
                 textDecoration: 'none',
               }}
+              className={styles.typographyFont}
             >
               dailyBug
             </Typography>
@@ -211,7 +213,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center" color="secondary">{page}</Typography>
+                    <Typography textAlign="center" color="secondary" className={styles.typographyFont}>{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -241,7 +243,8 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 color: 'secondary',
                 textDecoration: 'none',
               }}
-            >
+              className={styles.typographyFont}
+              >
               dailyBug
             </Typography>
             }
@@ -252,6 +255,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'inherit', display: 'block' }}
+                  className={styles.typographyFont}
                 >
                   {page}
                 </Button>

@@ -64,24 +64,6 @@ export default function Home({posts}) {
     setPostState(postState);
   }
 
-  // const searchInput = useRef();
-
-  // const keyDown = (event) => {
-  //   const code = event.keyCode;
-  //   if(event.ctrlKey && ( event.key === "Q" || event.key === "q")){
-  //     console.log("ctrl k press");
-  //     searchInput.current && searchInput.current.focus();
-  //   }
-  // }
-  
-  // useEffect(()=>{
-  //   window.addEventListener("keydown",keyDown);
-  //   return() => {
-  //     window.addEventListener("keydown",keyDown);
-  //   }
-  // }, []);
-
-
   return (
     <div className={styles.grid}>
       <Head>
