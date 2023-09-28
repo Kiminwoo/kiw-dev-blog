@@ -1,10 +1,10 @@
-import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
+import Head from 'next/head';
 
-import { GraphQLClient , gql } from 'graphql-request';
-import BlogCard  from '../../components/BlogCard.jsx';
-import HeaderBar  from '../../components/HeaderBar.jsx';
-import React , {useState , useEffect, useRef} from 'react';
+import { GraphQLClient, gql } from 'graphql-request';
+import { useEffect, useState } from 'react';
+import BlogCard from '../../components/BlogCard.jsx';
+import HeaderBar from '../../components/HeaderBar.jsx';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
