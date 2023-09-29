@@ -3,15 +3,11 @@ import styles from '@/styles/Slug.module.css?after';
 import { GraphQLClient, gql } from 'graphql-request';
 import { Fragment } from 'react';
 import HeadMeta from '../../../components/HeadMeta.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from "@fortawesome/free-solid-svg-icons"
-import { FaCopy } from 'react-icons/fa';
-import CodeBlock from '../../../components/CodeBlock.jsx';
-import { useEffect, useState } from 'react';
-
-import Prism from 'prismjs'
-import 'prismjs/components/prism-javascript' // Language
-import 'prismjs/themes/prism-okaidia.css' // Theme
+// import parse from 'html-react-parser';
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import DOMPurify from "dompurify";
+import {JSDOM} from 'jsdom'
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -78,58 +74,9 @@ export async function getStaticProps({ params }) {
 }
 
 export default function BlogPost({ post }) {
-  // let cnt = post.content.html.match(/<pre>/g).filter(function(item) { return item !== ''; }).length;
-  
-  // let codeArr = [];
-  // let textArr = [];
 
-  // let textSidx = 0;
-  // let textEidx = 0;
-  // let copyCodeHtml = post.content.html.replaceAll("<p></p>", "<br/>");
-
-  // for(let i = 0 ; i < cnt ; i++){
-  //   console.log(`html 길이 : ${copyCodeHtml.length}`)
-
-  //   let findSidx = copyCodeHtml.indexOf('<pre>');
-  //   let findEidx = Number(copyCodeHtml.indexOf('</pre>'))+6;
-    
-  //   if(i==0){
-  //     textSidx = 0 ;
-  //     textEidx = findSidx -13;
-  //   } else if (i == cnt-1){
-  //     textSidx = textEidx ;
-  //     textEidx = post.content.html.length+1;
-  //   }
-  //   else {
-  //     // textSidx += 1;
-  //     textEidx = findSidx ;
-  //   }
-
-  //   let textAre = copyCodeHtml.substring(textSidx,textEidx);
-  //   let preCode = copyCodeHtml.substring(findSidx,findEidx);
-  //   // let afterCode = copyCodeHtml.substring(findContentSidx,findContentEidx);
-
-  //   // 복사된 html 내에서 pre 코드 제거
-  //   copyCodeHtml = copyCodeHtml.replace(preCode,'');
-  //   console.log(`html 길이 : ${copyCodeHtml.length}`)
-  //   codeArr.push(preCode);
-  //   textArr.push(textAre);
-    
-  //   // textSidx = findEidx;
-  //   // if(i != 0){
-  //   textSidx = findEidx - preCode.length
-  //   // }
-  // }
-
-  // for(let i =0 ; i < codeArr.length ; i++){
-  //   console.log(`${i} 번째 : ${codeArr[i]}`);
-  // }
-
-  // console.log(` 텍스트 배열 : ${textArr}`);
-  
-  // useEffect(() => {
-  //   Prism.highlightAll()
-  // }, [])
+  const { window } = new JSDOM('<!DOCTYPE html>')
+const domPurify = DOMPurify(window)
 
   return (
     <Fragment>
@@ -151,66 +98,15 @@ export default function BlogPost({ post }) {
             className={styles.content}
             dangerouslySetInnerHTML={{
 
-              __html: makeHtmlContent(post.content.html)
+              __html: domPurify.sanitize(post.content.html)
 
             }}>
-            
           </div>
-          
-          {/* <div className={styles.content}>
-
-            { 
-              textArr.map((text,idx)=>{
-
-                let code = codeArr[idx].replaceAll("<pre>","")
-                .replaceAll("</pre>","")
-                .replaceAll("<code>","")
-                .replaceAll("</code>","")
-                .replaceAll(/<br\/>/ig,"\n")
-                .replaceAll(/&lt;/g,'<')
-                .replaceAll(/&gt;/g,'>')
-                .replaceAll(/&amp;/g, '&')
-                .replaceAll(/&quot;/g, '"')
-                .replaceAll(/&#039;/g, "'")
-                .replaceAll(/&#39;/g, "'");
-
-                return (
-
-                  <fragment>
-                    <div dangerouslySetInnerHTML={{
-                      __html : makeHtmlContent(text)
-                    }}>                  
-                    </div>
-                    <CodeBlock blockCode={code} language='javascript' />
-                  </fragment>
-
-                )
-              })
-            }
-            
-          </div> */}
-
-          {/* {
-            codeArr.map((code)=>{
-
-            code = code.replaceAll("<pre>","")
-              .replaceAll("</pre>","")
-              .replaceAll("<code>","")
-              .replaceAll("</code>","")
-              .replaceAll(/<br\/>/ig,"\n")
-              .replaceAll(/&lt;/g,'<')
-              .replaceAll(/&gt;/g,'>')
-              .replaceAll(/&amp;/g, '&')
-              .replaceAll(/&quot;/g, '"')
-              .replaceAll(/&#039;/g, "'")
-              .replaceAll(/&#39;/g, "'");
-
-            return <CodeBlock blockCode={code} language='javascript' />
-
-            })
-          } */}
-
         </div>
+
+        {/* <SyntaxHighlighter language="javascript" style={dark}>
+          console.log("qweqweqwe");
+        </SyntaxHighlighter> */}
 
         <div className={styles.authorArea}>
           <img className={styles.avatarImg} src={post.author.avatar.url} alt="" />
@@ -226,9 +122,7 @@ export default function BlogPost({ post }) {
 
 }
 
-function makeHtmlContent(postHtml){
-
-  postHtml = postHtml
+function makeHtmlContent(postHtml) {
 
   return postHtml;
 }
