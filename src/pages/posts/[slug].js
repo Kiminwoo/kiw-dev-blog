@@ -1,4 +1,4 @@
-import styles from '@/styles/Slug.module.css';
+import styles from '@/styles/Slug.module.css?after';
 
 import { GraphQLClient, gql } from 'graphql-request';
 import { Fragment } from 'react';
@@ -7,6 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from "@fortawesome/free-solid-svg-icons"
 import { FaCopy } from 'react-icons/fa';
 import CodeBlock from '../../../components/CodeBlock.jsx';
+import { useEffect, useState } from 'react';
+
+import Prism from 'prismjs'
+import 'prismjs/components/prism-javascript' // Language
+import 'prismjs/themes/prism-okaidia.css' // Theme
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -121,6 +126,10 @@ export default function BlogPost({ post }) {
   // }
 
   // console.log(` 텍스트 배열 : ${textArr}`);
+  
+  // useEffect(() => {
+  //   Prism.highlightAll()
+  // }, [])
 
   return (
     <Fragment>
@@ -219,7 +228,7 @@ export default function BlogPost({ post }) {
 
 function makeHtmlContent(postHtml){
 
-  postHtml = postHtml.replaceAll("<p></p>", "<br/>")
+  postHtml = postHtml
 
   return postHtml;
 }

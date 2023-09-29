@@ -80,9 +80,11 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     fontFamily: 'googleSigmar',
     // marginLeft: 16,
     width: '105%',
+
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
     },
+    
   }));
 
   const SearchIconWrapper = styled('div')(({ theme }) => ({

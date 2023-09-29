@@ -47,7 +47,9 @@ h1.mainTitle:hover::after {
     transform: translateX(5px);
 }
 
-.content {}
+.content {
+    padding: 0% 0% 3% 0%;
+}
 
 .authorArea {
     display: flex;
@@ -77,6 +79,14 @@ h1.mainTitle:hover::after {
     padding: 1em 1.5em;
     display: block;
     word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.content p code {
+    border: 1px solid rgb(208, 213, 231);
+    border-radius: 4px;
+    background-color: rgb(250, 251, 255);
+    padding: 4px;
 }
 
 .content a {
