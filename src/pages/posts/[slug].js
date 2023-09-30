@@ -106,12 +106,12 @@ export default function BlogPost({ post }) {
 
           {
 
-            parserHtmlArr.map((childHtml)=>{
+            parserHtmlArr.map((childHtml,idx)=>{
               
               // 코드 블럭이 아닐 경우 
               if(childHtml.tagName != "PRE"){
                 return(
-                <div
+                <div key={idx}
                   className={styles.content}
                   dangerouslySetInnerHTML={{
       
@@ -127,6 +127,7 @@ export default function BlogPost({ post }) {
                       language="javascript" 
                       style={atom}
                       wrapLongLines = {true}
+                      key={idx}
                     >
                       {changeCode(childHtml.outerHTML)} 
                     </SyntaxHighlighter>
