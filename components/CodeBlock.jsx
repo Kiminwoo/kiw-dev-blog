@@ -1,15 +1,14 @@
-import {CopyBlock , atomOneDark, atomOneLight , paraisoDark, rainbow, dracula} from 'react-code-blocks';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export default function CodeBlock({blockCode, language}){
+export default function CodeBlock({code, language, style}){
 
     return (
-        <CopyBlock
-        text={blockCode}
+        <SyntaxHighlighter
         language={language}
-        showLineNumbers={true}
-        wrapLines={true}
-        theme={atomOneDark}
-        codeBlock
-        /> 
+        style={style}
+        >
+        {code}    
+        </SyntaxHighlighter> 
     )
 }

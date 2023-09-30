@@ -3,9 +3,10 @@ import styles from '@/styles/Slug.module.css?after';
 import { GraphQLClient, gql } from 'graphql-request';
 import { Fragment } from 'react';
 import HeadMeta from '../../../components/HeadMeta.jsx';
-// import parse from 'html-react-parser';
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import parse from 'node-html-parser';
+import React , { useEffect, useState, } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark ,atomDark , atom} from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import DOMPurify from "dompurify";
 import {JSDOM} from 'jsdom'
 
@@ -76,7 +77,16 @@ export async function getStaticProps({ params }) {
 export default function BlogPost({ post }) {
 
   const { window } = new JSDOM('<!DOCTYPE html>')
-const domPurify = DOMPurify(window)
+  const domPurify = DOMPurify(window)
+  let parserHtmlArr ;
+
+  function parseHtml(htmlStr) { 
+    let root = parse(htmlStr);
+    parserHtmlArr = [...root.childNodes]
+
+  }
+
+  parseHtml(post.content.html)
 
   return (
     <Fragment>
@@ -94,19 +104,41 @@ const domPurify = DOMPurify(window)
             </h1>
           </div>
 
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{
+          {
 
-              __html: domPurify.sanitize(post.content.html)
+            parserHtmlArr.map((childHtml)=>{
+              
+              // 코드 블럭이 아닐 경우 
+              if(childHtml.tagName != "PRE"){
+                return(
+                <div
+                  className={styles.content}
+                  dangerouslySetInnerHTML={{
+      
+                    __html: domPurify.sanitize(childHtml.outerHTML)
+      
+                  }}>
+                </div>
+                )
+              } else { // 코드 블럭일 경우
+              
+                return (
+                    <SyntaxHighlighter 
+                      language="javascript" 
+                      style={atom}
+                      wrapLongLines = {true}
+                    >
+                      {changeCode(childHtml.outerHTML)} 
+                    </SyntaxHighlighter>
+                )
 
-            }}>
-          </div>
+              }
+            })
+
+
+          }
+
         </div>
-
-        {/* <SyntaxHighlighter language="javascript" style={dark}>
-          console.log("qweqweqwe");
-        </SyntaxHighlighter> */}
 
         <div className={styles.authorArea}>
           <img className={styles.avatarImg} src={post.author.avatar.url} alt="" />
@@ -122,7 +154,17 @@ const domPurify = DOMPurify(window)
 
 }
 
-function makeHtmlContent(postHtml) {
+function changeCode(postHtml) {
 
-  return postHtml;
+  return postHtml.replaceAll("<pre>","")
+                .replaceAll("</pre>","")
+                .replaceAll("<code>","")
+                .replaceAll("</code>","")
+                .replaceAll(/<br\/>/ig,"\n")
+                .replaceAll(/&lt;/g,'<')
+                .replaceAll(/&gt;/g,'>')
+                .replaceAll(/&amp;/g, '&')
+                .replaceAll(/&quot;/g, '"')
+                .replaceAll(/&#039;/g, "'")
+                .replaceAll(/&#39;/g, "'");
 }

@@ -28,6 +28,7 @@
     "jsdom": "^22.1.0",
     "net": "^1.0.2",
     "next": "13.2.4",
+    "node-html-parser": "^6.1.10",
     "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-code-blocks": "^0.1.4",
@@ -37,12 +38,13 @@
     "react-icons": "^4.11.0",
     "react-responsive": "^9.0.2",
     "react-syntax-highlighter": "^15.5.0"
-  }, "browser" : {
-    "tls" : false,
-    "net" : false,
-    "fs" : false,
-    "os" : false,
-    "path" : false,
+  },
+  "browser": {
+    "tls": false,
+    "net": false,
+    "fs": false,
+    "os": false,
+    "path": false,
     "child_process": false
   }
 }

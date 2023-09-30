@@ -79,7 +79,7 @@ h1.mainTitle:hover::after {
     padding: 1em 1.5em;
     display: block;
     word-wrap: break-word;
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
 }
 
 .content p code {
