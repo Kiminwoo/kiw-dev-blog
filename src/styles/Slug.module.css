@@ -10,7 +10,9 @@
     font-size: smaller;
     padding: 0% 0% 3% 0%;
 }
-
+.inner_blogContainer pre code span span {
+    background: none !important;
+}
 .cover {}
 
 .mainTitleArea {
