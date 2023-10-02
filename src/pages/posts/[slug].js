@@ -100,7 +100,7 @@ export default function BlogPost({ post }) {
         <div className={styles.inner_blogContainer}>
           <div className={styles.mainTitleArea}>
             <h1 className={styles.mainTitle}>
-              {post.title.replaceAll("[react]", "").replaceAll("[next.js]", "").substring(1)}
+              {post.title.replaceAll("[react]", "").replaceAll("[next.js]", "").replaceAll("[ js ]","").substring(1)}
             </h1>
           </div>
 
