@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap && next export",
     "start": "next start",
     "lint": "next lint",
     "vercel-deploy": "next build && next export"
@@ -37,7 +37,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
     "react-responsive": "^9.0.2",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "react-toggle-dark-mode": "^1.1.1"
   },
   "browser": {
     "tls": false,
@@ -46,5 +47,8 @@
     "os": false,
     "path": false,
     "child_process": false
+  },
+  "devDependencies": {
+    "next-sitemap": "^4.2.3"
   }
 }
