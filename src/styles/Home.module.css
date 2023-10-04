@@ -197,7 +197,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -8%);
+    transform: translate(-50%, -6%);
   }
 
   .card {
@@ -296,48 +296,48 @@
 /* Mobile */
 @media (max-width: 600px) {
   .main {
-    transform: translate(-50%, -11%);
+    transform: translate(-50%, -8%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
 @media (max-width: 500px) {
   .main {
-    transform: translate(-50%, -12%);
+    transform: translate(-50%, -10%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
 @media (max-width: 400px) {
   .main {
-    transform: translate(-50%, -15%);
+    transform: translate(-50%, -12%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
 @media (max-width: 350px) {
   .main {
-    transform: translate(-50%, -17%);
+    transform: translate(-50%, -14%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
 @media (max-width: 300px) {
   .main {
-    transform: translate(-50%, -19%);
+    transform: translate(-50%, -15%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
 @media (max-width: 250px) {
   .main {
-    transform: translate(-50%, -21%);
+    transform: translate(-50%, -16%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
 @media (max-width: 200px) {
   .main {
-    transform: translate(-50%, -23%);
+    transform: translate(-50%, -18%);
   }
 }
