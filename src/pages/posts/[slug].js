@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atom } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import HeadMeta from '../../../components/HeadMeta.jsx';
 import { getWindowSize } from '../../getWindowSize.js';
+import { useMediaQuery } from 'react-responsive';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -91,15 +92,20 @@ export default function BlogPost({ post }) {
 
   const { width , height} = getWindowSize(); 
 
+  const isMobile = useMediaQuery({
+    query: "(max-width:767px)",
+  });
+
   return (
     <Fragment>
 
       <div>
         <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>")} image={post.coverPhoto.url}></HeadMeta>
       </div>
-
-      <SpringScrollbars style={{ height: height}}>
-
+      
+      
+      <SpringScrollbars style={{ height: height}}> 
+      
       <main className={styles.blogContainer}>
 
 
@@ -156,6 +162,7 @@ export default function BlogPost({ post }) {
           <h6 className={styles.date}>{post.dataPublished}</h6>
         </div>
       </main>
+
       </SpringScrollbars>
 
     </Fragment>

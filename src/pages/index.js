@@ -69,6 +69,8 @@ export default function Home({posts}) {
   const { width , height} = getWindowSize(); 
 
   return (
+    <SpringScrollbars style={{ height: height}}>
+
     <div className={styles.grid}>
 
       <Head>
@@ -83,8 +85,6 @@ export default function Home({posts}) {
       </Head>
 
       <HeaderBar postList = {{posts}} getPostDate = {getPostDate}/>
-
-      <SpringScrollbars style={{ height: height}}>
 
       <main className={styles.main}> 
 
@@ -106,10 +106,9 @@ export default function Home({posts}) {
                   postChk = {"none"}
                 />
         }
-
       </main>
-      </SpringScrollbars>
-
     </div>
+    </SpringScrollbars>
+
   );
 }
