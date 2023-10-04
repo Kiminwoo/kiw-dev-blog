@@ -66,10 +66,10 @@ export default function Home({posts}) {
     setPostState(postState);
   }
 
-  const { width , height} = getWindowSize(); 
+  let { width , height} = getWindowSize(); 
 
   return (
-    <SpringScrollbars style={{ height: height}}>
+  <SpringScrollbars style={{ height: (height)}}>
 
     <div className={styles.grid}>
 
@@ -86,29 +86,31 @@ export default function Home({posts}) {
 
       <HeaderBar postList = {{posts}} getPostDate = {getPostDate}/>
 
-      <main className={styles.main}> 
+        <main className={styles.main}> 
 
-        {     
-              postState.posts.length != 0 ? 
-              postState.posts.map((post)=>(
+          {     
+                postState.posts.length != 0 ? 
+                postState.posts.map((post)=>(
 
-                <BlogCard
-                  title = {post.title}
-                  author = {post.author}
-                  coverPhoto = {post.coverPhoto}
-                  key ={post.id}
-                  dataPublished = {post.dataPublished}
-                  slug = {post.slug}
-                  postChk = {"show"}
-                />
-              )) :
-                <BlogCard
-                  postChk = {"none"}
-                />
-        }
-      </main>
+                  <BlogCard
+                    title = {post.title}
+                    author = {post.author}
+                    coverPhoto = {post.coverPhoto}
+                    key ={post.id}
+                    dataPublished = {post.dataPublished}
+                    slug = {post.slug}
+                    postChk = {"show"}
+                  />
+                )) :
+                  <BlogCard
+                    postChk = {"none"}
+                  />
+          }
+
+        </main>
+
     </div>
-    </SpringScrollbars>
+  </SpringScrollbars>
 
   );
 }

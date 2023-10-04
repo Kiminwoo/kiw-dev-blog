@@ -193,7 +193,11 @@
   .main {
     flex-direction: column;
     align-items: flex-start;
-    padding: 20% 0% 0% 14%;  
+    padding: 0% 0% 0% 0%;  
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -8%);
   }
 
   .card {
@@ -262,13 +266,6 @@
 }
 
 
-/* Mobile */
-@media (max-width: 600px) {
-  /* .main {
-    padding: 8% 62% 1% 1%;
-  } */
-}
-
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   /* .grid {
@@ -296,23 +293,51 @@
   }
 }
 
-/* smaller smart Phone Mobile */ 
-@media (max-width: 480px) {
+/* Mobile */
+@media (max-width: 600px) {
   .main {
-    padding: 23% 0% 0% 14%;
+    transform: translate(-50%, -11%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
-@media (max-width: 360px) {
+@media (max-width: 500px) {
   .main {
-    padding: 31% 1% 0% 14%;
+    transform: translate(-50%, -12%);
   }
 }
 
 /* smaller smart Phone Mobile */ 
-@media (max-width: 280px) {
+@media (max-width: 400px) {
   .main {
-    padding: 31% 14% 0% 14%;
+    transform: translate(-50%, -15%);
+  }
+}
+
+/* smaller smart Phone Mobile */ 
+@media (max-width: 350px) {
+  .main {
+    transform: translate(-50%, -17%);
+  }
+}
+
+/* smaller smart Phone Mobile */ 
+@media (max-width: 300px) {
+  .main {
+    transform: translate(-50%, -19%);
+  }
+}
+
+/* smaller smart Phone Mobile */ 
+@media (max-width: 250px) {
+  .main {
+    transform: translate(-50%, -21%);
+  }
+}
+
+/* smaller smart Phone Mobile */ 
+@media (max-width: 200px) {
+  .main {
+    transform: translate(-50%, -23%);
   }
 }
