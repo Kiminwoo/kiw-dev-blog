@@ -1,14 +1,15 @@
 import styles from '@/styles/Slug.module.css?after';
 
-import { GraphQLClient, gql } from 'graphql-request';
-import { Fragment } from 'react';
-import HeadMeta from '../../../components/HeadMeta.jsx';
-import parse from 'node-html-parser';
-import React , { useEffect, useState, } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark ,atomDark , atom} from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import SpringScrollbars from '@/SpringScrollbars.js';
 import DOMPurify from "dompurify";
-import {JSDOM} from 'jsdom'
+import { GraphQLClient, gql } from 'graphql-request';
+import { JSDOM } from 'jsdom';
+import parse from 'node-html-parser';
+import { Fragment } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atom } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import HeadMeta from '../../../components/HeadMeta.jsx';
+import { getWindowSize } from '../../getWindowSize.js';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -76,17 +77,19 @@ export async function getStaticProps({ params }) {
 
 export default function BlogPost({ post }) {
 
-  const { window } = new JSDOM('<!DOCTYPE html>')
-  const domPurify = DOMPurify(window)
+  const { window } = new JSDOM('<!DOCTYPE html>');
+  const domPurify = DOMPurify(window);
+
   let parserHtmlArr ;
 
   function parseHtml(htmlStr) { 
     let root = parse(htmlStr);
     parserHtmlArr = [...root.childNodes]
-
   }
 
   parseHtml(post.content.html)
+
+  const { width , height} = getWindowSize(); 
 
   return (
     <Fragment>
@@ -95,7 +98,10 @@ export default function BlogPost({ post }) {
         <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>")} image={post.coverPhoto.url}></HeadMeta>
       </div>
 
+      <SpringScrollbars style={{ height: height}}>
+
       <main className={styles.blogContainer}>
+
 
         <div className={styles.inner_blogContainer}>
           <div className={styles.mainTitleArea}>
@@ -150,6 +156,8 @@ export default function BlogPost({ post }) {
           <h6 className={styles.date}>{post.dataPublished}</h6>
         </div>
       </main>
+      </SpringScrollbars>
+
     </Fragment>
   )
 

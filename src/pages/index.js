@@ -1,10 +1,12 @@
 import styles from '@/styles/Home.module.css?after';
 import Head from 'next/head';
 
+import SpringScrollbars from '@/SpringScrollbars.js';
 import { GraphQLClient, gql } from 'graphql-request';
 import { useEffect, useState } from 'react';
 import BlogCard from '../../components/BlogCard.jsx';
 import HeaderBar from '../../components/HeaderBar.jsx';
+import { getWindowSize } from '../getWindowSize.js';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -64,8 +66,11 @@ export default function Home({posts}) {
     setPostState(postState);
   }
 
+  const { width , height} = getWindowSize(); 
+
   return (
     <div className={styles.grid}>
+
       <Head>
         <title>daliyBug</title>
         <meta name="description" content="postMainPage" />
@@ -78,6 +83,8 @@ export default function Home({posts}) {
       </Head>
 
       <HeaderBar postList = {{posts}} getPostDate = {getPostDate}/>
+
+      <SpringScrollbars style={{ height: height}}>
 
       <main className={styles.main}> 
 
@@ -99,7 +106,10 @@ export default function Home({posts}) {
                   postChk = {"none"}
                 />
         }
+
       </main>
+      </SpringScrollbars>
+
     </div>
   );
 }

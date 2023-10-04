@@ -8,6 +8,10 @@
   flex-wrap: wrap;
 }
 
+.main::-webkit-scrollbar{
+  display: none;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
