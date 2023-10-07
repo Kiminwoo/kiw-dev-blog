@@ -1,4 +1,4 @@
 .typographyFont{
-    font-family: var(--font-googleBlackHanSans);
+    font-family: var(--font-googleBlackHanSans) !important;
     font-weight: 400;
 }
