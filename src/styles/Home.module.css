@@ -8,6 +8,10 @@
   flex-wrap: wrap;
 }
 
+.small_main{
+  justify-content: space-around !important;
+}
+
 .main::-webkit-scrollbar{
   display: none;
 }

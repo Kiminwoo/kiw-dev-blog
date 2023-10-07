@@ -85,8 +85,9 @@ export default function Home({posts}) {
       </Head>
 
       <HeaderBar postList = {{posts}} getPostDate = {getPostDate}/>
-      
-        <main className={styles.main}> 
+        
+        {/* 게시물의 갯수가 3개보다 작을 경우 or 게시물의 개수가 3개 이상일 경우 */}
+        <main className={`${styles.main} ${postState.posts.length < 3 ? `${styles.small_main}` : ""}` }> 
 
           {     
                 postState.posts.length != 0 ? 
