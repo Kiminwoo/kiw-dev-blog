@@ -141,7 +141,6 @@ function ResponsiveAppBar({ postList, getPostDate }) {
   const keyDown = (event) => {
     const code = event.keyCode;
     if (event.ctrlKey && (event.key === "Q" || event.key === "q")) {
-      console.log("ctrl k press");
       searchInput.current.click();
     }
   }

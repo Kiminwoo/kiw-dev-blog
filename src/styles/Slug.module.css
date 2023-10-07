@@ -59,8 +59,9 @@ h1.mainTitle:hover::after {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-family: "googleBlackHanSans";
-    font-size: large;
+    font-family: "GmarketSansMedium";
+    font-size: smaller;
+    font-weight: bold;
 }
 
 .avatarImg {

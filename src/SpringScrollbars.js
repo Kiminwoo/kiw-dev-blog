@@ -67,7 +67,8 @@ export default class SpringScrollbars extends Component {
 
     renderThumb({ style, ...props }) {
         const thumbStyle = {
-            backgroundColor: `rgb(0,0,0)`
+            backgroundColor: `rgb(0,0,0)`,
+            borderRadius: '5px'
         };
         return (
             <div
