@@ -6,11 +6,10 @@ import { GraphQLClient, gql } from 'graphql-request';
 import { JSDOM } from 'jsdom';
 import parse from 'node-html-parser';
 import { Fragment } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atom } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { useMediaQuery } from 'react-responsive';
+import CodeBlock from '../../../components/CodeBlock.jsx';
 import HeadMeta from '../../../components/HeadMeta.jsx';
 import { getWindowSize } from '../../getWindowSize.js';
-import { useMediaQuery } from 'react-responsive';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -135,14 +134,9 @@ export default function BlogPost({ post }) {
               } else { // 코드 블럭일 경우
               
                 return (
-                    <SyntaxHighlighter 
-                      language="javascript" 
-                      style={atom}
-                      wrapLongLines = {true}
-                      key={idx}
-                    >
-                      {changeCode(childHtml.outerHTML)} 
-                    </SyntaxHighlighter>
+
+                <CodeBlock code ={childHtml.outerHTML} language ="javascript" key={idx} />
+                
                 )
 
               }
@@ -168,21 +162,6 @@ export default function BlogPost({ post }) {
     </Fragment>
   )
 
-}
-
-function changeCode(postHtml) {
-
-  return postHtml.replaceAll("<pre>","")
-                .replaceAll("</pre>","")
-                .replaceAll("<code>","")
-                .replaceAll("</code>","")
-                .replaceAll(/<br\/>/ig,"\n")
-                .replaceAll(/&lt;/g,'<')
-                .replaceAll(/&gt;/g,'>')
-                .replaceAll(/&amp;/g, '&')
-                .replaceAll(/&quot;/g, '"')
-                .replaceAll(/&#039;/g, "'")
-                .replaceAll(/&#39;/g, "'");
 }
 
 

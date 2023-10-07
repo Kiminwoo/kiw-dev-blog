@@ -69,7 +69,7 @@ export default function Home({posts}) {
   let { width , height} = getWindowSize(); 
 
   return (
-  // <SpringScrollbars style={{ height: (height)}}>
+  <SpringScrollbars style={{ height: (height)}}>
 
     <div className={styles.grid}>
 
@@ -110,7 +110,7 @@ export default function Home({posts}) {
         </main>
 
     </div>
-  // </SpringScrollbars>
+  </SpringScrollbars>
 
   );
 }
