@@ -6,7 +6,7 @@
 }
 
 .inner_blogContainer {
-    font-family: 'GmarketSansMedium';
+    font-family: var(--font-GmarketSansMedium);
     font-size: smaller;
     padding: 0% 0% 3% 0%;
 }
@@ -59,7 +59,7 @@ h1.mainTitle:hover::after {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-family: "GmarketSansMedium";
+    font-family: var(--font-GmarketSansMedium);
     font-size: smaller;
     font-weight: bold;
 }
