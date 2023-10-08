@@ -12,19 +12,19 @@ import MenuItem from '@mui/material/MenuItem';
 import { alpha, styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 
 import { grey } from '@mui/material/colors';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from 'react-responsive';
 import styles from '../src/styles/Header.module.css?after';
-
+import { gViewMode } from '@/pages/_app';
 
 const pages = ['FE-SKILL'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar({ postList, getPostDate , viewMode }) {
+function ResponsiveAppBar({ postList, getPostDate }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [userInput, setUserInput] = useState({
@@ -57,6 +57,8 @@ function ResponsiveAppBar({ postList, getPostDate , viewMode }) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  let viewMode = useContext(gViewMode);
 
   const theme = createTheme({
     palette: {

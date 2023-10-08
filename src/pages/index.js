@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import SpringScrollbars from '@/SpringScrollbars.js';
 import { GraphQLClient, gql } from 'graphql-request';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BlogCard from '../../components/BlogCard.jsx';
 import HeaderBar from '../../components/HeaderBar.jsx';
 import { getWindowSize } from '../getWindowSize.js';
@@ -38,11 +38,11 @@ const QUERY = gql`
 
 `;
 
-export async function getStaticProps(){
+export async function getStaticProps() {
   const { posts } = await graphcms.request(QUERY);
-  
+
   // 최신 내용 정렬
-  posts.sort(function(a,b){
+  posts.sort(function (a, b) {
     return new Date(b.dataPublished) - new Date(a.dataPublished);
   })
 
@@ -52,86 +52,71 @@ export async function getStaticProps(){
       posts,
     },
 
-    revalidate : 10,
+    revalidate: 10,
 
   };
 }
 
-export default function Home({posts}) {
+export default function Home({ posts }) {
 
-  const [postState,setPostState] = useState({posts});
-  const [viewMode, setViewMode] = useState(false);
+  const [postState, setPostState] = useState({ posts });
 
-  useEffect(()=>{
+  useEffect(() => {
     getPostDate(postState);
-
-      if (typeof window !== "undefined") { // 윈도우 타입이 언디파인드가 아닐때 실행
-
-          // 현재 다크모드 여부 ( true : 다크모드 , false : 라이트모드 )
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-          // viewMode : true : 다크모드 , false : 라이트모드
-          prefersDark ? setViewMode(true) : setViewMode(false);
-
-      } else {
-          return;
-      }
-
   })
-  
-  const getPostDate = (postState) =>{
+
+  const getPostDate = (postState) => {
     setPostState(postState);
   }
 
-  let { width , height} = getWindowSize(); 
+  let { width, height } = getWindowSize();
 
   return (
-  <SpringScrollbars style={{ height: (height)} } viewMode = {viewMode}>
 
-    <div className={styles.grid}>
+    <SpringScrollbars style={{ height: (height) }}>
 
-      <Head>
-        <title>daliyBug</title>
-        <meta name="description" content="postMainPage" />
-        <meta name="author" content="inwookim" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content= "https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory2.daumcdn.net%2Ftistory%2F2899385%2Fattach%2F3c560e9b7b7c4d6fb3eefa0a05a944fb"/>
-        <meta property="og:title" content={"버그 없는 세상에서 살고 싶다."} />
-        <link rel="shortcut icon" href="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory3.daumcdn.net%2Ftistory%2F2899385%2Fattach%2F3c560e9b7b7c4d6fb3eefa0a05a944fb" />
+      <div className={styles.grid}>
 
-      </Head>
+        <Head>
+          <title>daliyBug</title>
+          <meta name="description" content="postMainPage" />
+          <meta name="author" content="inwookim" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta property="og:image" content="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory2.daumcdn.net%2Ftistory%2F2899385%2Fattach%2F3c560e9b7b7c4d6fb3eefa0a05a944fb" />
+          <meta property="og:title" content={"버그 없는 세상에서 살고 싶다."} />
+          <link rel="shortcut icon" href="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory3.daumcdn.net%2Ftistory%2F2899385%2Fattach%2F3c560e9b7b7c4d6fb3eefa0a05a944fb" />
 
-      <HeaderBar postList = {{posts}} getPostDate = {getPostDate} viewMode = {viewMode}/>
-        
+        </Head>
+
+        <HeaderBar postList={{ posts }} getPostDate={getPostDate} />
+
         {/* 게시물의 갯수가 3개보다 작을 경우 or 게시물의 개수가 3개 이상일 경우 */}
-        <main className={`${styles.main} ${postState.posts.length < 3 ? `${styles.small_main}` : ""}` }> 
+        <main className={`${styles.main} ${postState.posts.length < 3 ? `${styles.small_main}` : ""}`}>
 
-          {     
-                postState.posts.length != 0 ? 
-                postState.posts.map((post)=>(
+          {
+            postState.posts.length != 0 ?
+              postState.posts.map((post) => (
 
-                  <BlogCard
-                    title = {post.title}
-                    author = {post.author}
-                    coverPhoto = {post.coverPhoto}
-                    coverPhotoLight = {post.coverPhotoLight}
-                    key ={post.id}
-                    dataPublished = {post.dataPublished}
-                    slug = {post.slug}
-                    postChk = {"show"}
-                    viewMode = {viewMode}
-                  />
-                )) :
-                  <BlogCard
-                    postChk = {"none"}
-                    viewMode = {viewMode}
-                  />
+                <BlogCard
+                  title={post.title}
+                  author={post.author}
+                  coverPhoto={post.coverPhoto}
+                  coverPhotoLight={post.coverPhotoLight}
+                  key={post.id}
+                  dataPublished={post.dataPublished}
+                  slug={post.slug}
+                  postChk={"show"}
+                />
+              )) :
+              <BlogCard
+                postChk={"none"}
+              />
           }
 
         </main>
 
-    </div>
-  </SpringScrollbars>
+      </div>
+    </SpringScrollbars>
 
   );
 }

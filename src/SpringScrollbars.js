@@ -1,8 +1,10 @@
-import React, { Component , useRef} from 'react';
+import React, { Component, useRef, useContext, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { SpringSystem, MathUtil } from 'rebound';
+import { gViewMode } from './pages/_app';
 
 export default class SpringScrollbars extends Component {
+    static contextType = gViewMode;
 
     constructor(props, ...rest) {
         super(props, ...rest);
@@ -52,7 +54,7 @@ export default class SpringScrollbars extends Component {
         scrollbars.scrollTop(val);
     }
 
-    
+
     renderView({ style, ...props }) {
         const viewStyle = {
             padding: 15
@@ -61,23 +63,27 @@ export default class SpringScrollbars extends Component {
             <div
                 className="box"
                 style={{ ...style, ...viewStyle }}
-                {...props}/>
+                {...props} />
         );
     }
 
     renderThumb({ style, ...props }) {
+
+        let viewMode = this.context;
+
         const thumbStyle = {
-            backgroundColor: `rgb(0,0,0)`,
+            backgroundColor: viewMode ? "rgb(255,255,255)" : "rgb(0,0,0)",
             borderRadius: '5px'
         };
         return (
             <div
                 style={{ ...style, ...thumbStyle }}
-                {...props}/>
+                {...props} />
         );
     }
 
     render() {
+
         return (
             <Scrollbars
                 renderView={this.renderView}
