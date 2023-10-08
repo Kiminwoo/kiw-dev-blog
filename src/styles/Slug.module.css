@@ -68,7 +68,7 @@ h1.mainTitle:hover::after {
     height: 36px;
 }
 
-.content>pre {
+.inner_blogContainer >pre {
     background: #f4f4f4;
     border: 1px solid #ddd;
     border-left: 3px solid #f36d33;
@@ -84,6 +84,7 @@ h1.mainTitle:hover::after {
     display: block;
     word-wrap: break-word;
     /* white-space: pre-wrap; */
+    border-radius: 0.4rem;
 }
 
 .content p code {
@@ -145,3 +146,13 @@ h1.mainTitle:hover::after {
 /* Mobile */
 /* Tablets & larger smartphones */
 @media (max-width: 400px) {}
+
+
+@media (prefers-color-scheme: dark) {
+    .content p code {
+        background-color: var(--background-end-rgb);
+    }
+    .content>blockquote{
+        background: var(--background-blockquote);
+    }
+}

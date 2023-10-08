@@ -30,6 +30,9 @@ const QUERY = gql`
       coverPhoto{
           url
       }
+      coverPhotoLight{
+        url
+      }
     }  
   }
 
@@ -57,9 +60,23 @@ export async function getStaticProps(){
 export default function Home({posts}) {
 
   const [postState,setPostState] = useState({posts});
+  const [viewMode, setViewMode] = useState(false);
 
   useEffect(()=>{
     getPostDate(postState);
+
+      if (typeof window !== "undefined") { // 윈도우 타입이 언디파인드가 아닐때 실행
+
+          // 현재 다크모드 여부 ( true : 다크모드 , false : 라이트모드 )
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+          // viewMode : true : 다크모드 , false : 라이트모드
+          prefersDark ? setViewMode(true) : setViewMode(false);
+
+      } else {
+          return;
+      }
+
   })
   
   const getPostDate = (postState) =>{
@@ -69,7 +86,7 @@ export default function Home({posts}) {
   let { width , height} = getWindowSize(); 
 
   return (
-  <SpringScrollbars style={{ height: (height)}}>
+  <SpringScrollbars style={{ height: (height)} } viewMode = {viewMode}>
 
     <div className={styles.grid}>
 
@@ -84,7 +101,7 @@ export default function Home({posts}) {
 
       </Head>
 
-      <HeaderBar postList = {{posts}} getPostDate = {getPostDate}/>
+      <HeaderBar postList = {{posts}} getPostDate = {getPostDate} viewMode = {viewMode}/>
         
         {/* 게시물의 갯수가 3개보다 작을 경우 or 게시물의 개수가 3개 이상일 경우 */}
         <main className={`${styles.main} ${postState.posts.length < 3 ? `${styles.small_main}` : ""}` }> 
@@ -97,14 +114,17 @@ export default function Home({posts}) {
                     title = {post.title}
                     author = {post.author}
                     coverPhoto = {post.coverPhoto}
+                    coverPhotoLight = {post.coverPhotoLight}
                     key ={post.id}
                     dataPublished = {post.dataPublished}
                     slug = {post.slug}
                     postChk = {"show"}
+                    viewMode = {viewMode}
                   />
                 )) :
                   <BlogCard
                     postChk = {"none"}
+                    viewMode = {viewMode}
                   />
           }
 

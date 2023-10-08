@@ -24,7 +24,7 @@ import styles from '../src/styles/Header.module.css?after';
 const pages = ['FE-SKILL'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar({ postList, getPostDate }) {
+function ResponsiveAppBar({ postList, getPostDate , viewMode }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [userInput, setUserInput] = useState({
@@ -67,6 +67,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
         // This is green.A700 as hex.
         main: grey[900],
       },
+      mode: viewMode ? 'dark' : 'light'
     },
   });
 
@@ -187,7 +188,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color="secondary"
+                color="inherit"
               >
                 <MenuIcon />
               </IconButton>
@@ -211,7 +212,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center" color="secondary" className={styles.typographyFont}>{page}</Typography>
+                    <Typography textAlign="center" color="inherit" className={styles.typographyFont}>{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -262,40 +263,38 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
 
             {
-              
-              <Box sx={{ flexGrow: 0 }}>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} >
-                  </StyledInputBase>
-                  
-                  <Paper elevation={1} square={false} sx={{
-                    position: 'absolute',
-                    float: 'right',
-                    top: '16%',
-                    right: '16%',
-                    width: '22%',
-                    textAlign: 'center'
-                  }}
+                  <Box sx={{ flexGrow: 0 }}>
+                    <Search>
+                      <SearchIconWrapper>
+                        <SearchIcon />
+                      </SearchIconWrapper>
+                      <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} >
+                      </StyledInputBase>
+                      
+                      <Paper elevation={1} square={false} sx={{
+                        position: 'absolute',
+                        float: 'right',
+                        top: '16%',
+                        right: '16%',
+                        width: '22%',
+                        textAlign: 'center'
+                      }}
 
-                  > Ctrl </Paper>
+                      > Ctrl </Paper>
 
-                  <Paper elevation={1} square={false} sx={{
-                    position: 'absolute',
-                    float: 'right',
-                    top: '16%',
-                    right: '2%',
-                    width: '12%',
-                    textAlign: 'center'
-                  }}
+                      <Paper elevation={1} square={false} sx={{
+                        position: 'absolute',
+                        float: 'right',
+                        top: '16%',
+                        right: '2%',
+                        width: '12%',
+                        textAlign: 'center'
+                      }}
 
-                  >Q</Paper>
+                      >Q</Paper>
 
-                </Search>
-              </Box>
-
+                    </Search>
+                  </Box>
             }
 
           </Toolbar>

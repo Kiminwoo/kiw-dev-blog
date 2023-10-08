@@ -1,5 +1,4 @@
 import styles from '@/styles/Slug.module.css?after';
-
 import SpringScrollbars from '@/SpringScrollbars.js';
 import DOMPurify from "dompurify";
 import { GraphQLClient, gql } from 'graphql-request';
@@ -32,6 +31,10 @@ const QUERY = gql`
           html
         }
         coverPhoto{
+          id
+          url
+        }
+        coverPhotoLight{
           id
           url
         }
