@@ -9,6 +9,7 @@ import { useEffect, useState, useContext } from "react";
 import { gViewMode } from '@/pages/_app';
 
 export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, dataPublished, slug, postChk }) {
+
     let viewMode = useContext(gViewMode);
 
     if (postChk == "none") {

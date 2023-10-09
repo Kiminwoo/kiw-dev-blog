@@ -18,7 +18,7 @@ import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from 'react-responsive';
 import styles from '../src/styles/Header.module.css?after';
-import { gViewMode } from '@/pages/_app';
+import { gViewMode, setGViewMode } from '@/pages/_app';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 const pages = ['FE-SKILL'];
@@ -32,12 +32,13 @@ function ResponsiveAppBar({ postList, getPostDate }) {
   });
 
   let viewMode = useContext(gViewMode);
+  let setViewMode = useContext(setGViewMode);
   let [isDarkMode, setDarkMode] = useState(viewMode ? true : false);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     setDarkMode(viewMode)
-  },[viewMode])
-  
+  }, [])
+
   const isDesktop = useMediaQuery({
     query: "(min-width:1024px)",
   });
@@ -78,16 +79,18 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     },
   });
 
-  const toggleDarkMode = function darkSwitch(){
+  const toggleDarkMode = function darkSwitch() {
     setDarkMode(isDarkMode ? false : true);
-    
-    // 다크모드로 변경일 경우  
-    if(!isDarkMode){
-      document.documentElement.setAttribute('color-theme','dark');
-      
-    } else { // 라이트모드로 변경일 경우 
-      document.documentElement.setAttribute('color-theme','light');
 
+    // 다크모드로 변경일 경우  
+    if (!isDarkMode) {
+      document.documentElement.setAttribute('color-theme', 'dark');
+      setViewMode(true);
+      localStorage.setItem('viewMode', true);
+    } else { // 라이트모드로 변경일 경우 
+      document.documentElement.setAttribute('color-theme', 'light');
+      setViewMode(false);
+      localStorage.setItem('viewMode', false);
     }
 
   }
@@ -106,7 +109,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
     },
-    
+
   }));
 
   const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -177,7 +180,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
   return (
 
     mounted &&
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
 
       <AppBar position="fixed" disablegutters="true" >
         <Container maxWidth="xl">
@@ -238,35 +241,34 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 ))}
               </Menu>
             </Box>
-            
+
             {
               !isMobile &&
-               <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> 
-
+              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             }
 
             {
               !isMobile &&
-               
+
               <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'secondary',
-                textDecoration: 'none',
-              }}
-              className={styles.typographyFont}
+                variant="h5"
+                noWrap
+                component="a"
+                href=""
+                sx={{
+                  mr: 2,
+                  display: { xs: 'flex', md: 'none' },
+                  flexGrow: 1,
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'secondary',
+                  textDecoration: 'none',
+                }}
+                className={styles.typographyFont}
               >
-              dailyBug
-            </Typography>
+                dailyBug
+              </Typography>
             }
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -281,11 +283,11 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 </Button>
               ))}
             </Box>
-            
+
             <DarkModeSwitch
               style={{
-                position:'relative',
-                margin:'1%'
+                position: 'relative',
+                margin: '1%'
               }}
               // true : dark mode , false : light mode 
               checked={isDarkMode}
@@ -293,38 +295,38 @@ function ResponsiveAppBar({ postList, getPostDate }) {
               size={30}
             />
             {
-                  <Box sx={{ flexGrow: 0 }}>
-                    <Search>
-                      <SearchIconWrapper>
-                        <SearchIcon />
-                      </SearchIconWrapper>
-                      <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} >
-                      </StyledInputBase>
-                      
-                      <Paper elevation={1} square={false} sx={{
-                        position: 'absolute',
-                        float: 'right',
-                        top: '16%',
-                        right: '16%',
-                        width: '22%',
-                        textAlign: 'center'
-                      }}
+              <Box sx={{ flexGrow: 0 }}>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} >
+                  </StyledInputBase>
 
-                      > Ctrl </Paper>
+                  <Paper elevation={1} square={false} sx={{
+                    position: 'absolute',
+                    float: 'right',
+                    top: '16%',
+                    right: '16%',
+                    width: '22%',
+                    textAlign: 'center'
+                  }}
 
-                      <Paper elevation={1} square={false} sx={{
-                        position: 'absolute',
-                        float: 'right',
-                        top: '16%',
-                        right: '2%',
-                        width: '12%',
-                        textAlign: 'center'
-                      }}
+                  > Ctrl </Paper>
 
-                      >Q</Paper>
+                  <Paper elevation={1} square={false} sx={{
+                    position: 'absolute',
+                    float: 'right',
+                    top: '16%',
+                    right: '2%',
+                    width: '12%',
+                    textAlign: 'center'
+                  }}
 
-                    </Search>
-                  </Box>
+                  >Q</Paper>
+
+                </Search>
+              </Box>
             }
 
           </Toolbar>
