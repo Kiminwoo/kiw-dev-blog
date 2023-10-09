@@ -13,13 +13,13 @@ import { alpha, styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef, useState, useContext } from 'react';
-
 import { grey } from '@mui/material/colors';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from 'react-responsive';
 import styles from '../src/styles/Header.module.css?after';
 import { gViewMode } from '@/pages/_app';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 const pages = ['FE-SKILL'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -31,6 +31,13 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     searchItem: "",
   });
 
+  let viewMode = useContext(gViewMode);
+  let [isDarkMode, setDarkMode] = useState(viewMode ? true : false);
+  
+  useEffect(()=>{
+    setDarkMode(viewMode)
+  },[viewMode])
+  
   const isDesktop = useMediaQuery({
     query: "(min-width:1024px)",
   });
@@ -58,9 +65,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     setAnchorElUser(null);
   };
 
-  let viewMode = useContext(gViewMode);
-
-  const theme = createTheme({
+  let theme = createTheme({
     palette: {
       primary: {
         main: grey[50],
@@ -69,9 +74,23 @@ function ResponsiveAppBar({ postList, getPostDate }) {
         // This is green.A700 as hex.
         main: grey[900],
       },
-      mode: viewMode ? 'dark' : 'light'
+      mode: isDarkMode ? 'dark' : 'light'
     },
   });
+
+  const toggleDarkMode = function darkSwitch(){
+    setDarkMode(isDarkMode ? false : true);
+    
+    // 다크모드로 변경일 경우  
+    if(!isDarkMode){
+      document.documentElement.setAttribute('color-theme','dark');
+      
+    } else { // 라이트모드로 변경일 경우 
+      document.documentElement.setAttribute('color-theme','light');
+
+    }
+
+  }
 
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -137,7 +156,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+  });
 
   const searchInput = useRef();
 
@@ -158,7 +177,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
   return (
 
     mounted &&
-    <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
 
       <AppBar position="fixed" disablegutters="true" >
         <Container maxWidth="xl">
@@ -262,8 +281,17 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 </Button>
               ))}
             </Box>
-
-
+            
+            <DarkModeSwitch
+              style={{
+                position:'relative',
+                margin:'1%'
+              }}
+              // true : dark mode , false : light mode 
+              checked={isDarkMode}
+              onChange={toggleDarkMode}
+              size={30}
+            />
             {
                   <Box sx={{ flexGrow: 0 }}>
                     <Search>

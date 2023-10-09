@@ -55,5 +55,4 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
             </div>
         )
     }
-    // }
 }

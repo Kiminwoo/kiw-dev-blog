@@ -1,9 +1,11 @@
 import React, { Component, useRef, useContext, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { SpringSystem, MathUtil } from 'rebound';
-import { gViewMode } from './pages/_app';
+import { gViewMode } from '@/pages/_app';
 
 export default class SpringScrollbars extends Component {
+    
+    
     static contextType = gViewMode;
 
     constructor(props, ...rest) {

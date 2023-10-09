@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 
 // 사용자의 다크모드 or 라이트모드 확인 여부
-export const gViewMode = React.createContext(false);
+export const gViewMode = React.createContext();
 
 export default function App({ Component, pageProps }) {
 
@@ -17,6 +17,8 @@ export default function App({ Component, pageProps }) {
 
       // 현재 다크모드 여부 ( true : 다크모드 , false : 라이트모드 )
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      console.log(`useEffect 내에서 ${prefersDark}`)
 
       // viewMode : true : 다크모드 , false : 라이트모드
       prefersDark ? setViewMode(true) : setViewMode(false);
@@ -30,12 +32,12 @@ export default function App({ Component, pageProps }) {
 
   return (
     <Fragment>
-      <gViewMode.Provider value ={viewMode} >
+        <gViewMode.Provider value={viewMode} >
 
-        <GlobalStyles />
-        <Component {...pageProps} />
-      
-      </gViewMode.Provider>
+          <GlobalStyles />
+          <Component {...pageProps} />
+
+        </gViewMode.Provider>
     </Fragment>
   )
 }

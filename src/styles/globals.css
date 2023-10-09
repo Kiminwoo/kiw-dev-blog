@@ -47,6 +47,19 @@
   /* scroll-behavior: smooth; */
 }
 
+:root[color-theme='dark']{
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --background-blockquote: rgb(87, 86, 86);
+}
+
+:root[color-theme='light']{
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
