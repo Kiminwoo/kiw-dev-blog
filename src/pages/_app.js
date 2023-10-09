@@ -17,10 +17,10 @@ export default function App({ Component, pageProps }) {
     // 윈도우 타입이 언디파인드가 아닐때 실행
     if (typeof window !== "undefined") { 
 
-      let localViewMode = localStorage.getItem('viewMode');
+      // let localViewMode = localStorage.getItem('viewMode');
 
       // 사용자가 다크모드 or 라이트모드를 하지 않은 경우  
-      if(localViewMode === null){
+      // if(localViewMode === null){
   
         // 현재 다크모드 여부 ( true : 다크모드 , false : 라이트모드 )
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -28,9 +28,11 @@ export default function App({ Component, pageProps }) {
         // viewMode : true : 다크모드 , false : 라이트모드
         prefersDark ? setViewMode(true) : setViewMode(false);
 
-      } else {
-        setViewMode(localViewMode);
-      } 
+      // } 
+      
+      // else {
+      //   setViewMode(localViewMode);
+      // } 
 
     } else {
       return;

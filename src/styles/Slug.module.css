@@ -90,7 +90,7 @@ h1.mainTitle:hover::after {
 .content p code {
     border: 1px solid rgb(208, 213, 231);
     border-radius: 4px;
-    background-color: rgb(250, 251, 255);
+    background-color: var(--background-code);
     padding: 4px;
 }
 
@@ -114,7 +114,7 @@ h1.mainTitle:hover::after {
 
 .content>blockquote {
     padding: 15px;
-    background: #eee;
+    background: var(--background-blockquote);
     border-radius: 5px;
 }
 
@@ -146,13 +146,3 @@ h1.mainTitle:hover::after {
 /* Mobile */
 /* Tablets & larger smartphones */
 @media (max-width: 400px) {}
-
-
-@media (prefers-color-scheme: dark) {
-    .content p code {
-        background-color: var(--background-end-rgb);
-    }
-    .content>blockquote{
-        background: var(--background-blockquote);
-    }
-}
