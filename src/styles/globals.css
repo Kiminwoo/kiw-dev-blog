@@ -13,7 +13,7 @@
   /* --background-start-rgb: 214, 219, 220; */
   --background-end-rgb: 255, 255, 255;
   --background-code:'rgb(250,251,255)';
-
+  
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -45,7 +45,8 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
-
+  --content-a-nav: rgb(0,0,255);
+  
   /* scroll-behavior: smooth; */
 }
 
@@ -55,6 +56,7 @@
   --background-end-rgb: 0, 0, 0;
   --background-blockquote: rgb(87, 86, 86);
   --background-code: rgb(0,0,0);
+  --content-a-nav: rgb(204,204,255);
 }
 
 :root[color-theme='light']{
@@ -62,6 +64,7 @@
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
   --background-blockquote :rgb(238,238,238);
+  --content-a-nav: rgb(0,0,255);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -95,6 +98,8 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+
+    --content-a-nav: rgb(204,204,255);
   }
 }
 
@@ -104,6 +109,8 @@
     --background-start-rgb: 255, 255, 255;
     --background-end-rgb: 255, 255, 255;
     --background-blockquote :rgb(238,238,238);
+    --content-a-nav: rgb(0,0,255);
+
   }
 }
 

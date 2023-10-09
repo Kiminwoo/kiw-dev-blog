@@ -95,7 +95,7 @@ h1.mainTitle:hover::after {
 }
 
 .content a {
-    color: blue;
+    color: var(--content-a-nav);
     text-decoration: underline lightblue;
 }
 
