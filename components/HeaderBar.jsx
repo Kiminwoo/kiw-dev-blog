@@ -116,7 +116,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
-    pointerEvents: 'auto',
+    pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -174,9 +174,9 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
   useEffect(() => {
     window.addEventListener("keydown", keyDown);
-    return () => {
-      window.addEventListener("keydown", keyDown);
-    }
+    // return () => {
+    //   window.addEventListener("keydown", keyDown);
+    // }
   }, []);
 
   return (
