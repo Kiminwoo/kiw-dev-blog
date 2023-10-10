@@ -1,8 +1,6 @@
-{/* <script type='text/javascript' charset='UTF-8'> */}
 import { useEffect } from "react";
 
 export default function Inapp(){	
-
 
 	useEffect(() => {
 
@@ -79,4 +77,3 @@ export default function Inapp(){
 	
 	  },[])
 }
-// </script>

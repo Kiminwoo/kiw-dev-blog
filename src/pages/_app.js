@@ -2,10 +2,8 @@ import '@/styles/globals.css?after'
 import { Fragment } from 'react'
 import GlobalStyles from '../../components/GlobalStyles';
 import React, { useEffect, useState } from 'react';
-// import { Inapp } from '../../components/Inapp';
-import Inapp from './kakao_inapp';
-// import {slug} from './'
-// 사용자의 다크모드 or 라이트모드 확인 여부
+import InApp from './kakaoInApp';
+
 export const gViewMode = React.createContext();
 export const setGViewMode = React.createContext();
 
@@ -17,11 +15,6 @@ export default function App({ Component, pageProps }) {
 
     // 윈도우 타입이 언디파인드가 아닐때 실행
     if (typeof window !== "undefined") { 
-
-      // const script = document.createElement("script");
-      // script.src = Inapp;
-      // script.async = true;
-      // document.body.appendChild(script);
 
       // let localViewMode = localStorage.getItem('viewMode');
 
@@ -49,7 +42,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <Fragment>
-      <Inapp />
+      <InApp />
       <setGViewMode.Provider value = {setViewMode} >
         <gViewMode.Provider value={viewMode} >
 
