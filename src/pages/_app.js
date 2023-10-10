@@ -2,7 +2,7 @@ import '@/styles/globals.css?after'
 import { Fragment } from 'react'
 import GlobalStyles from '../../components/GlobalStyles';
 import React, { useEffect, useState } from 'react';
-import InApp from '../../components/InApp';
+import InApp from '../../components/InApp.jsx';
 
 export const gViewMode = React.createContext();
 export const setGViewMode = React.createContext();
