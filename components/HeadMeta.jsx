@@ -4,7 +4,7 @@ const HeadMeta = ({ title, description, image }) => {
     return (
         <Head>
             <title>{title || "dailyBug"}</title>
-            <meta name="description" content="dailyBug" />
+            <meta name="description" content={description} />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <meta property="og:title" content={title || "dailyBug"} />
             <meta property="og:description" content={description}></meta>
