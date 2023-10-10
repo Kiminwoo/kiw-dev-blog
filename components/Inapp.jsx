@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 export default function InApp(){	
 
+    
 	useEffect(() => {
 
 		if(typeof window !== "undefined"){
