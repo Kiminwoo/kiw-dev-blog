@@ -90,6 +90,7 @@ export default class SpringScrollbars extends Component {
             <Scrollbars
                 renderView={this.renderView}
                 renderThumbVertical={this.renderThumb}
+                renderThumbHorizontal={this.renderThumb}
                 universal={true}
                 {...this.props}
             />
