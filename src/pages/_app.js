@@ -2,7 +2,7 @@ import '@/styles/globals.css?after'
 import { Fragment } from 'react'
 import GlobalStyles from '../../components/GlobalStyles';
 import React, { useEffect, useState } from 'react';
-import InApp from './kakaoInApp';
+import InApp from '../../components/InApp';
 
 export const gViewMode = React.createContext();
 export const setGViewMode = React.createContext();
