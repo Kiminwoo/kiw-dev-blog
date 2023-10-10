@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import GlobalStyles from '../../components/GlobalStyles';
 import React, { useEffect, useState } from 'react';
 import InApp from './InApp';
+import { inject }from '@vercel/analytics';
 
 export const gViewMode = React.createContext();
 export const setGViewMode = React.createContext();
@@ -32,7 +33,7 @@ export default function App({ Component, pageProps }) {
       // else {
       //   setViewMode(localViewMode);
       // } 
-
+      inject();
     } else {
       return;
     }
