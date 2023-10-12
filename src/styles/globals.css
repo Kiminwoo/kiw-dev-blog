@@ -164,6 +164,7 @@ a {
   font-style: normal;
   font-weight: 400;
   src: url("../assets/Sigmar/Sigmar-Regular.ttf");
+  font-display: swap;
 }
 
 @font-face {
@@ -171,6 +172,7 @@ a {
   font-style: normal;
   font-weight: 100;
   src: url("../assets/Chivo_Mono/ChivoMono-VariableFont_wght.ttf");
+  font-display: swap;
 }
 
 @font-face {
@@ -178,6 +180,7 @@ a {
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -185,4 +188,5 @@ a {
   font-style: normal;
   font-weight: 400;
   src: url("../assets/Black_Han_Sans/BlackHanSans-Regular.ttf");
+  font-display: swap;
 }

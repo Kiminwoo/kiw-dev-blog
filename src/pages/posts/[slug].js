@@ -9,8 +9,7 @@ import { useMediaQuery } from 'react-responsive';
 import CodeBlock from '../../../components/CodeBlock.jsx';
 import HeadMeta from '../../../components/HeadMeta.jsx';
 import { getWindowSize } from '../../getWindowSize.js';
-// import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-import Image from 'next/image'
+import Image from 'next/image';
 
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
@@ -101,6 +100,11 @@ export default function BlogPost({ post }) {
     query: "(max-width:767px)",
   });
 
+  const avatarImg = {
+    height: "36px",
+    width : "36px"
+  }
+
   return (
     <Fragment>
 
@@ -177,7 +181,16 @@ export default function BlogPost({ post }) {
           </div>
 
           <div className={styles.authorArea}>
-            <img className={styles.avatarImg} src={post.author.avatar.url} alt="" />
+            {/* <img className={styles.avatarImg} src={post.author.avatar.url} alt="avatar" width={}/> */}
+            
+            <Image
+              width={100}
+              height={100}
+              src={post.author.avatar.url}
+              alt={"avatar"}
+              style={avatarImg}
+            />
+
             <div className={styles.authtext}>
               <span className={styles.byText}> By </span>
               <span> {post.author.name}</span>
