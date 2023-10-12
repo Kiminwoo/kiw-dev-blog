@@ -6,8 +6,7 @@ import { Avatar } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Fragment, useContext } from "react";
-import Image from 'next/image';
+import { useContext } from "react";
 
 export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, dataPublished, slug, postChk}) {
 

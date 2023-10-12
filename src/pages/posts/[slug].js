@@ -1,3 +1,7 @@
+import dynamic from 'next/dynamic';
+
+// const styles = dynamic(() => import('@/styles/Slug.module.css?after'));
+// const SpringScrollbars = dynamic(() => import('@/SpringScrollbars.js'));
 import styles from '@/styles/Slug.module.css?after';
 import SpringScrollbars from '@/SpringScrollbars.js';
 import DOMPurify from "dompurify";
@@ -6,10 +10,16 @@ import { JSDOM } from 'jsdom';
 import parse from 'node-html-parser';
 import { Fragment } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import CodeBlock from '../../../components/CodeBlock.jsx';
-import HeadMeta from '../../../components/HeadMeta.jsx';
-import { getWindowSize } from '../../getWindowSize.js';
 import Image from 'next/image';
+
+const CodeBlock = dynamic(() => import('../../../components/CodeBlock.jsx'));
+const HeadMeta = dynamic(() => import('../../../components/HeadMeta.jsx'));
+// const { getWindowSize } = dynamic(() => import('../../getWindowSize.js'));
+
+
+// import CodeBlock from '../../../components/CodeBlock.jsx';
+// import HeadMeta from '../../../components/HeadMeta.jsx';
+import { getWindowSize } from '../../getWindowSize.js';
 
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
