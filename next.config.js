@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+// next plugin manage
+const withPlugins = require('next-compose-plugins');
+// next plugin bundle-analyzer 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const nextDefaultConfig = {
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
@@ -9,4 +17,28 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig;
+const nextConfig = withBundleAnalyzer({
+  compress: true,
+  webpack(config, {webpack}){
+      const prod = process.env.NODE_ENV === 'production';
+      const plugins = [...config.plugins];
+      
+      return {
+          ...config,
+          mode: prod? 'production' : 'development',
+          devtool: prod? 'hidden-source-map' : 'eval',
+          plugins,
+          
+      };
+  },
+});
+
+module.exports = withPlugins(
+  [
+    withBundleAnalyzer,
+    nextConfig,
+    // 추가적인 Plugin'S....
+  ],
+  nextDefaultConfig
+);
+

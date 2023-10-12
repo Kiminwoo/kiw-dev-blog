@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap && next export",
+    "build": "cross-env ANALYZE=true NODE_ENV=production next build && next-sitemap && next export",
     "start": "next start",
     "lint": "next lint",
     "vercel-deploy": "next build && next export"
@@ -19,7 +19,9 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.12.0",
+    "@next/bundle-analyzer": "^13.5.4",
     "@vercel/analytics": "^1.1.0",
+    "cross-env": "^7.0.3",
     "dompurify": "^3.0.6",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
@@ -30,6 +32,7 @@
     "lodash": "^4.17.21",
     "net": "^1.0.2",
     "next": "13.2.4",
+    "next-compose-plugins": "^2.2.1",
     "node-html-parser": "^6.1.10",
     "prismjs": "^1.29.0",
     "react": "18.2.0",
@@ -55,5 +58,6 @@
   },
   "devDependencies": {
     "next-sitemap": "^4.2.3"
-  }
+  },
+  "sideEffects": false
 }
