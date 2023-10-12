@@ -107,6 +107,10 @@ h1.mainTitle:hover::after {
     transition: 0.7s;
 }
 
+.contentImg {
+    width: 100%;
+    height: 100%;
+}
 
 .content>blockquote {
     margin: 3% 0 3% 0;

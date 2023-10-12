@@ -10,7 +10,8 @@ import CodeBlock from '../../../components/CodeBlock.jsx';
 import HeadMeta from '../../../components/HeadMeta.jsx';
 import { getWindowSize } from '../../getWindowSize.js';
 // import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-
+import Image from 'next/image'
+ 
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -105,10 +106,7 @@ export default function BlogPost({ post }) {
 
       <div>
         <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url}></HeadMeta>
-        {/* {console.log(`html parser ${post.content.html.replaceAll(/<[^>]*>?/g, '')}`)} */}
-
       </div>
-      
       
       <SpringScrollbars style={{ height: height}}> 
       
@@ -121,13 +119,30 @@ export default function BlogPost({ post }) {
               {post.title.replaceAll("[ react ]", "").replaceAll("[ next ]", "").replaceAll("[ js ]","").substring(1)}
             </h1>
           </div>
-
           {
 
             parserHtmlArr.map((childHtml,idx)=>{
-              
+              const contentImg = {
+                width: '100%',
+                height: '100%',
+              }
+              // image 태그일 경우 next/Image 를 통한 이미지 최적화
+              if(childHtml.tagName == "IMG"){
+                return (
+                  <div>
+                    <Image
+                      width={childHtml.rawAttributes.width}
+                      height={childHtml.rawAttributes.height}
+                      src={childHtml.rawAttributes.src}
+                      alt={childHtml.rawAttributes.alt}
+                      style = {contentImg}
+                    />
+                  </div>
+                )
+              }
+
               // 코드 블럭이 아닐 경우 
-              if(childHtml.tagName != "PRE"){
+              else if(childHtml.tagName != "PRE"){
                 return(
                 <div key={idx}
                   className={styles.content}
@@ -138,7 +153,8 @@ export default function BlogPost({ post }) {
                   }}>
                 </div>
                 )
-              } else { // 코드 블럭일 경우
+              } 
+              else { // 코드 블럭일 경우
               
                 return (
 
