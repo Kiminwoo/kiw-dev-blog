@@ -94,9 +94,9 @@ export default function Home({ posts }) {
 
           {
             postState.posts.length != 0 ?
-              postState.posts.map((post,idx) => (
+              postState.posts.map((post) => (
                 // 컴포넌트를 감싼 형태에서 Fragment 에 key 값을 줌으로써 BlogCard 컴포넌트의 unique key 값 유지
-                <Fragment key={idx}>
+                <Fragment key={post.id}>
                   <BlogCard
                     title={post.title}
                     author={post.author}
