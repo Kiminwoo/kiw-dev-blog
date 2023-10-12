@@ -16,14 +16,13 @@ function changeCode(postHtml) {
         .replaceAll(/&#39;/g, "'");
 }
 
-export default function CodeBlock({ code, language, key }) {
+export default function CodeBlock({ code, language }) {
 
     return (
         <SyntaxHighlighter
             language={language}
             style={atom}
             wrapLongLines={true}
-            key={key}
         >
             {changeCode(code)}
 

@@ -11,7 +11,7 @@ import HeadMeta from '../../../components/HeadMeta.jsx';
 import { getWindowSize } from '../../getWindowSize.js';
 // import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import Image from 'next/image'
- 
+
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -86,16 +86,16 @@ export default function BlogPost({ post }) {
   const { window } = new JSDOM('<!DOCTYPE html>');
   const domPurify = DOMPurify(window);
 
-  let parserHtmlArr ;
+  let parserHtmlArr;
 
-  function parseHtml(htmlStr) { 
+  function parseHtml(htmlStr) {
     let root = parse(htmlStr);
     parserHtmlArr = [...root.childNodes]
   }
 
   parseHtml(post.content.html)
 
-  const { width , height} = getWindowSize(); 
+  const { width, height } = getWindowSize();
 
   const isMobile = useMediaQuery({
     query: "(max-width:767px)",
@@ -107,78 +107,84 @@ export default function BlogPost({ post }) {
       <div>
         <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url}></HeadMeta>
       </div>
-      
-      <SpringScrollbars style={{ height: height}}> 
-      
-      <main className={styles.blogContainer}>
+
+      <SpringScrollbars style={{ height: height }}>
+
+        <main className={styles.blogContainer}>
 
 
-        <div className={styles.inner_blogContainer}>
-          <div className={styles.mainTitleArea}>
-            <h1 className={styles.mainTitle}>
-              {post.title.replaceAll("[ react ]", "").replaceAll("[ next ]", "").replaceAll("[ js ]","").substring(1)}
-            </h1>
-          </div>
-          {
+          <div className={styles.inner_blogContainer}>
+            <div className={styles.mainTitleArea}>
+              <h1 className={styles.mainTitle}>
+                {post.title.replaceAll("[ react ]", "").replaceAll("[ next ]", "").replaceAll("[ js ]", "").substring(1)}
+              </h1>
+            </div>
+            {
 
-            parserHtmlArr.map((childHtml,idx)=>{
-              const contentImg = {
-                width: '100%',
-                height: '100%',
-              }
-              // image 태그일 경우 next/Image 를 통한 이미지 최적화
-              if(childHtml.tagName == "IMG"){
-                return (
-                  <div>
-                    <Image
-                      width={childHtml.rawAttributes.width}
-                      height={childHtml.rawAttributes.height}
-                      src={childHtml.rawAttributes.src}
-                      alt={childHtml.rawAttributes.alt}
-                      style = {contentImg}
-                    />
-                  </div>
-                )
-              }
-
-              // 코드 블럭이 아닐 경우 
-              else if(childHtml.tagName != "PRE"){
-                return(
-                <div key={idx}
-                  className={styles.content}
-                  dangerouslySetInnerHTML={{
-      
-                    __html: domPurify.sanitize(childHtml.outerHTML)
-      
-                  }}>
-                </div>
-                )
-              } 
-              else { // 코드 블럭일 경우
-              
-                return (
-
-                <CodeBlock code ={childHtml.outerHTML} language ="javascript" key={idx} />
+              parserHtmlArr.map((childHtml, idx) => {
                 
-                )
+                // img 태그의 Image 컴포넌트의 style 
+                const contentImg = {
+                  width: '100%',
+                  height: '100%',
+                }
+                
+                // image 태그일 경우 next/Image 를 통한 이미지 최적화
+                if (childHtml.tagName == "IMG") {
+                  return (
+                    <Fragment key={"imageContent" + idx}>
+                      <div>
+                        <Image
+                          width={childHtml.rawAttributes.width}
+                          height={childHtml.rawAttributes.height}
+                          src={childHtml.rawAttributes.src}
+                          alt={childHtml.rawAttributes.alt}
+                          style={contentImg}
+                        />
+                      </div>
+                    </Fragment>
+                  )
+                }
 
-              }
-            })
+                // !tag : img , code 일 경우
+                else if (childHtml.tagName != "PRE") {
+                  return (
+                    <Fragment key={"content" + idx}>
+                      <div key={"content" + idx}
+                        className={styles.content}
+                        dangerouslySetInnerHTML={{
 
+                          __html: domPurify.sanitize(childHtml.outerHTML)
 
-          }
+                        }}>
+                      </div>
+                    </Fragment>
+                  )
+                }
 
-        </div>
+                // 코드 블럭일 경우
+                else { 
+                  return (
+                    <Fragment key={"codeBlock" + idx}>
+                      <CodeBlock code={childHtml.outerHTML} language="javascript" />
+                    </Fragment>
+                  )
+                }
+              })
 
-        <div className={styles.authorArea}>
-          <img className={styles.avatarImg} src={post.author.avatar.url} alt="" />
-          <div className={styles.authtext}>
-            <span className={styles.byText}> By </span>
-            <span> {post.author.name}</span>
+            }
+
           </div>
-          <h6 className={styles.date}>{post.dataPublished}</h6>
-        </div>
-      </main>
+
+          <div className={styles.authorArea}>
+            <img className={styles.avatarImg} src={post.author.avatar.url} alt="" />
+            <div className={styles.authtext}>
+              <span className={styles.byText}> By </span>
+              <span> {post.author.name}</span>
+            </div>
+            <h6 className={styles.date}>{post.dataPublished}</h6>
+          </div>
+        </main>
 
       </SpringScrollbars>
 

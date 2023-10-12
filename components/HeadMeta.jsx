@@ -6,6 +6,8 @@ const HeadMeta = ({ title, description, image }) => {
             <title>{title || "dailyBug"}</title>
             <meta name="description" content={description} />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            
+            {/*  google */}
             <meta property="og:title" content={title || "dailyBug"} />
             <meta property="og:description" content={description}></meta>
             <meta property="og:type" content="website" />

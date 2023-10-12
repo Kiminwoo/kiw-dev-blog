@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import SpringScrollbars from '@/SpringScrollbars.js';
 import { GraphQLClient, gql } from 'graphql-request';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import BlogCard from '../../components/BlogCard.jsx';
 import HeaderBar from '../../components/HeaderBar.jsx';
 import { getWindowSize } from '../getWindowSize.js';
@@ -94,22 +94,26 @@ export default function Home({ posts }) {
 
           {
             postState.posts.length != 0 ?
-              postState.posts.map((post) => (
-
-                <BlogCard
-                  title={post.title}
-                  author={post.author}
-                  coverPhoto={post.coverPhoto}
-                  coverPhotoLight={post.coverPhotoLight}
-                  key={post.id}
-                  dataPublished={post.dataPublished}
-                  slug={post.slug}
-                  postChk={"show"}
-                />
+              postState.posts.map((post,idx) => (
+                // 컴포넌트를 감싼 형태에서 Fragment 에 key 값을 줌으로써 BlogCard 컴포넌트의 unique key 값 유지
+                <Fragment key={idx}>
+                  <BlogCard
+                    title={post.title}
+                    author={post.author}
+                    coverPhoto={post.coverPhoto}
+                    coverPhotoLight={post.coverPhotoLight}
+                    dataPublished={post.dataPublished}
+                    slug={post.slug}
+                    postChk={"show"}
+                  />
+                </Fragment>  
               )) :
-              <BlogCard
-                postChk={"none"}
-              />
+                <Fragment key="noneContent">
+                  <BlogCard
+                    myKey = "noneContent"
+                    postChk={"none"}
+                  />
+                </Fragment>  
           }
 
         </main>
