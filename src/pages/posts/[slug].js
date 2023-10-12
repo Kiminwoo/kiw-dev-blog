@@ -144,6 +144,7 @@ export default function BlogPost({ post }) {
                           src={childHtml.rawAttributes.src}
                           alt={childHtml.rawAttributes.alt}
                           style={contentImg}
+                          sizes='300px'
                         />
                       </div>
                     </Fragment>
@@ -181,7 +182,6 @@ export default function BlogPost({ post }) {
           </div>
 
           <div className={styles.authorArea}>
-            {/* <img className={styles.avatarImg} src={post.author.avatar.url} alt="avatar" width={}/> */}
             
             <Image
               width={100}
@@ -189,6 +189,7 @@ export default function BlogPost({ post }) {
               src={post.author.avatar.url}
               alt={"avatar"}
               style={avatarImg}
+              sizes='36px'
             />
 
             <div className={styles.authtext}>

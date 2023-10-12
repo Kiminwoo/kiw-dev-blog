@@ -7,11 +7,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Fragment, useContext } from "react";
+import Image from 'next/image';
 
 export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, dataPublished, slug, postChk}) {
 
     let viewMode = useContext(gViewMode);
 
+    const cardImg = {
+        objectFit:"cover",
+        borderRadius : "5px",
+        width:"20%",
+        height:"150px"
+    }
     if (postChk == "none") {
         return (
 
@@ -24,6 +31,7 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
         return (
                 <div className={styles.card}>
                     <Link href={"/posts/" + slug}>
+
                         <CardMedia
                             component="img"
                             height="20%"
@@ -32,6 +40,17 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
                             alt={title}
                             className={styles.cardImg}
                         />
+
+                        {/* <Image
+                            width="100"
+                            height="100"
+                            src={viewMode ? coverPhoto.url : coverPhotoLight.url}
+                            alt={title}
+                            style={cardImg}
+                            sizes='500px'
+                        /> */}
+
+                        
                     </Link>
 
                     <CardContent>
