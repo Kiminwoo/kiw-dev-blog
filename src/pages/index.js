@@ -118,7 +118,6 @@ export default function Home({ posts }) {
               )) :
                 <Fragment key="noneContent">
                   <BlogCard
-                    myKey = "noneContent"
                     postChk={"none"}
                   />
                 </Fragment>  

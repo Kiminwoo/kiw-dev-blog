@@ -21,7 +21,7 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
     if (postChk == "none") {
         return (
 
-                <div className={styles.noShow} key={myKey}>
+                <div className={styles.noShow}>
                     <h1>no results were found for your search.</h1>
                 </div>
 
