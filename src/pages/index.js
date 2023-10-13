@@ -1,10 +1,10 @@
 import styles from '@/styles/Home.module.css?after';
-import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
 // import SpringScrollbars from '@/SpringScrollbars.js';
 import { GraphQLClient, gql } from 'graphql-request';
-import React, { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 // import BlogCard from '../../components/BlogCard.jsx';
 // import HeaderBar from '../../components/HeaderBar.jsx';
@@ -14,7 +14,6 @@ const BlogCard = dynamic(() => import('../../components/BlogCard.jsx'));
 const HeaderBar = dynamic(() => import('../../components/HeaderBar.jsx'));
 // const { getWindowSize } = dynamic(() => import('../getWindowSize.js'));
 const SpringScrollbars = dynamic(() => import('@/SpringScrollbars.js'));
-
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import styles from '../src/styles/BlogCard.module.css?after';
 
 import { gViewMode } from '@/pages/_app';
@@ -7,17 +8,39 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { useContext } from "react";
+const NewIcon = dynamic(()=>import('./NewIcon.jsx'));
+
+
+/**
+ * 포스팅된 날짜와 현재 날짜를 구별하여 최신 포스트 여부 판단 (3일이상 지난 포스팅은 최신 포스트로 간주하지 않음)
+ * @param {string} dataPublished - 포스트된 날짜 
+ * @return {boolean} - true : 최신 포스트 , false : 최신이 아닌 포스트
+ */
+function checkCurPost(dataPublished){
+    
+    let publishedDay = dataPublished.split("-");
+    
+    const today = new Date();
+    // 현재 날짜를 가져옵니다.
+
+    const formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    // 원하는 형식으로 날짜를 설정합니다.
+
+    if(String(today.getFullYear()) === publishedDay[0] && 
+        String(today.getMonth() + 1) === publishedDay[1] &&
+        Number(today.getDate()) - Number(publishedDay[2]) < 4
+        ){
+            return true
+    } else {
+        return false
+    }
+
+}
 
 export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, dataPublished, slug, postChk}) {
 
     let viewMode = useContext(gViewMode);
-
-    const cardImg = {
-        objectFit:"cover",
-        borderRadius : "5px",
-        width:"20%",
-        height:"150px"
-    }
+    
     if (postChk == "none") {
         return (
 
@@ -29,6 +52,7 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
     } else {
         return (
                 <div className={styles.card}>
+
                     <Link href={"/posts/" + slug}>
 
                         <CardMedia
@@ -39,20 +63,14 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
                             alt={title}
                             className={styles.cardImg}
                         />
-
-                        {/* <Image
-                            width="100"
-                            height="100"
-                            src={viewMode ? coverPhoto.url : coverPhotoLight.url}
-                            alt={title}
-                            style={cardImg}
-                            sizes='500px'
-                        /> */}
-
                         
                     </Link>
 
                     <CardContent>
+                        {
+                            checkCurPost(dataPublished) && <NewIcon/>
+                        }
+                        
                         <Typography gutterBottom variant='h4' component="div">
                             <div className={styles.cardContentText}>
                                 {title}
