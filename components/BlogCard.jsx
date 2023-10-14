@@ -52,7 +52,7 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
         )
     } else {
         return (
-                <div className={styles.card}>
+                <div className={styles.card} >
 
                     <Link href={"/posts/" + slug}>
 

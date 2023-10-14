@@ -1,6 +1,7 @@
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import styles from '../src/styles/BlogCard.module.css?after';
+import { Fragment } from 'react';
 
 export default function PostTags({tags}){
 
@@ -11,7 +12,9 @@ export default function PostTags({tags}){
                     tags.length != 0 &&
                     tags[0].split(',').map((tag)=>{
                         return(
-                            <Chip label={tag} variant='outlined'/>
+                            <Fragment key={tag}>
+                                <Chip label={tag} variant='outlined'/>
+                            </Fragment>
                         )
                     })
                 }

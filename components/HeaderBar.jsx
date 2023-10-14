@@ -20,8 +20,9 @@ import { useMediaQuery } from 'react-responsive';
 import styles from '../src/styles/Header.module.css?after';
 import { gViewMode, setGViewMode } from '@/pages/_app';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const pages = ['FE-SKILL'];
+const pages = ['JS','REACT','NEXT'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar({ postList, getPostDate }) {
@@ -58,8 +59,16 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  // app bar 내에서 MenuItem 클릭시 
+  const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
+
+    const clickedTag = postList.posts.filter((post) => {
+      return post.slug.toLowerCase().includes(event.currentTarget.textContent.toLowerCase()+"-");
+    });
+
+    getPostDate({ "posts": clickedTag });
+
   };
 
   const handleCloseUserMenu = () => {
@@ -143,7 +152,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
     }
   }));
 
-  const handleChange = (prop) => (event) => {
+  const handleSearchChange = (prop) => (event) => {
 
     if (event.key === 'Enter') {
 
@@ -238,7 +247,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center" color="inherit" className={styles.typographyFont}>{page}</Typography>
+                    <Typography textAlign="center" color="inherit" className={styles.typographyFont} >{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -286,6 +295,8 @@ function ResponsiveAppBar({ postList, getPostDate }) {
               ))}
             </Box>
 
+            {/* <FontAwesomeIcon icon="fa-brands fa-github" /> */}
+            
             <DarkModeSwitch
               style={{
                 position: 'relative',
@@ -302,7 +313,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
-                  <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleChange("searchItem")} ref={searchInput} >
+                  <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleSearchChange("searchItem")} ref={searchInput} >
                   </StyledInputBase>
 
                   <Paper elevation={1} square={false} sx={{

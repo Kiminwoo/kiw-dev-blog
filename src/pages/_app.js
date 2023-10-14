@@ -4,6 +4,12 @@ import GlobalStyles from '../../components/GlobalStyles';
 import React, { useEffect, useState } from 'react';
 import InApp from './InApp';
 import { inject }from '@vercel/analytics';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fas, faGithub)
+
 
 export const gViewMode = React.createContext();
 export const setGViewMode = React.createContext();
