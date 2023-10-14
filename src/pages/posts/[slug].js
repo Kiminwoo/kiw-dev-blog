@@ -2,15 +2,15 @@ import dynamic from 'next/dynamic';
 
 // const styles = dynamic(() => import('@/styles/Slug.module.css?after'));
 // const SpringScrollbars = dynamic(() => import('@/SpringScrollbars.js'));
-import styles from '@/styles/Slug.module.css?after';
 import SpringScrollbars from '@/SpringScrollbars.js';
+import styles from '@/styles/Slug.module.css?after';
 import DOMPurify from "dompurify";
 import { GraphQLClient, gql } from 'graphql-request';
 import { JSDOM } from 'jsdom';
+import Image from 'next/image';
 import parse from 'node-html-parser';
 import { Fragment } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import Image from 'next/image';
 
 const CodeBlock = dynamic(() => import('../../../components/CodeBlock.jsx'));
 const HeadMeta = dynamic(() => import('../../../components/HeadMeta.jsx'));
@@ -31,6 +31,7 @@ const QUERY = gql`
         id,
         title,
         slug,
+        tags,
         dataPublished,
         author{
           id,

@@ -49,6 +49,27 @@
   color: rgb(255,102,102);
 }
 
+.tags{
+  padding: 0% 0% 2% 0%;
+  overflow: auto;
+}
+
+.tags{
+  /* Firefox */
+  scrollbar-width: none;
+}
+
+.tags::-webkit-scrollbar{
+  /* chrome , safari , opera */
+  display: none;
+}
+
+.tags div div {
+  font-family: var(--font-googleBlackHanSans);
+  border: 3px solid var( --font-color);
+  color: var( --font-color);
+}
+
 /* Mobile */ 
 /* Tablets & larger smartphones */
 @media (min-width: 768px) {

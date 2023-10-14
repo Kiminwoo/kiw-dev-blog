@@ -8,8 +8,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { useContext } from "react";
-const NewIcon = dynamic(()=>import('./NewIcon.jsx'));
 
+const NewIcon = dynamic(()=>import('./NewIcon.jsx'));
+const PostTags = dynamic(()=>import('./PostTags.jsx'));
 
 /**
  * 포스팅된 날짜와 현재 날짜를 구별하여 최신 포스트 여부 판단 (3일이상 지난 포스팅은 최신 포스트로 간주하지 않음)
@@ -37,10 +38,10 @@ function checkCurPost(dataPublished){
 
 }
 
-export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, dataPublished, slug, postChk}) {
+export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, dataPublished, slug, tags,postChk}) {
 
     let viewMode = useContext(gViewMode);
-    
+
     if (postChk == "none") {
         return (
 
@@ -76,6 +77,9 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
                                 {title}
                             </div>
                         </Typography>
+
+                        <PostTags tags={tags} />
+                        
                         <div className={styles.cardContentBottom}>
 
                             <div className={styles.cardContentBottomArea}>

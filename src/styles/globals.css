@@ -8,12 +8,12 @@
   --font-googleSigmar:"googleSigmar";
   --font-googleChivoMono: "googleChivoMono";
   --font-GmarketSansMedium : "GmarketSansMedium";
-  
+  --font-color:'rgb(0,0,0)';
+
   --foreground-rgb: 0, 0, 0;
   /* --background-start-rgb: 214, 219, 220; */
   --background-end-rgb: 255, 255, 255;
   --background-code:'rgb(250,251,255)';
-  
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -57,6 +57,7 @@
   --background-blockquote: rgb(87, 86, 86);
   --background-code: rgb(0,0,0);
   --content-a-nav: rgb(204,204,255);
+  --font-color:rgb(255,255,255);
 }
 
 :root[color-theme='light']{
@@ -65,6 +66,7 @@
   --background-end-rgb: 255, 255, 255;
   --background-blockquote :rgb(238,238,238);
   --content-a-nav: rgb(0,0,255);
+  --font-color:rgb(0,0,0);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -100,6 +102,7 @@
     --card-border-rgb: 200, 200, 200;
 
     --content-a-nav: rgb(204,204,255);
+    --font-color:rgb(255,255,255);
   }
 }
 
@@ -110,7 +113,7 @@
     --background-end-rgb: 255, 255, 255;
     --background-blockquote :rgb(238,238,238);
     --content-a-nav: rgb(0,0,255);
-
+    --font-color:rgb(0,0,0);
   }
 }
 

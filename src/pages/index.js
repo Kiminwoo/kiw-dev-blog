@@ -25,6 +25,7 @@ const QUERY = gql`
       title,
       dataPublished,
       slug,
+      tags,
       content {
         html
       }
@@ -111,6 +112,7 @@ export default function Home({ posts }) {
                     coverPhotoLight={post.coverPhotoLight}
                     dataPublished={post.dataPublished}
                     slug={post.slug}
+                    tags={post.tags}
                     postChk={"show"}
                   />
                 </Fragment>  
