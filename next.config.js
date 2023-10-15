@@ -14,7 +14,7 @@ const nextDefaultConfig = {
   },
   images : {
     loader: 'akamai',
-    path: '/',
+    path: '',
     domains : ["media.graphassets.com"],
   },
   experimental: {

@@ -116,6 +116,10 @@ export default function BlogPost({ post }) {
     width : "36px"
   }
 
+  const imgLoader = ({src,width,quality})=>{
+    return `${src}?w=${width}&q=${quality}`;
+  }
+
   return (
     <Fragment>
 
@@ -156,6 +160,8 @@ export default function BlogPost({ post }) {
                           alt={childHtml.rawAttributes.alt}
                           style={contentImg}
                           sizes='1200px'
+                          loader={imgLoader}
+                          quality={75}
                         />
                       </div>
                     </Fragment>
@@ -201,6 +207,8 @@ export default function BlogPost({ post }) {
               alt={"avatar"}
               style={avatarImg}
               sizes='36px'
+              loader={imgLoader}
+              quality={75}
             />
 
             <div className={styles.authtext}>
