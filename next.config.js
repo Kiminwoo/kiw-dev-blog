@@ -13,7 +13,13 @@ const nextDefaultConfig = {
     ignoreDuringBuilds: true,
   },
   images : {
+    loader: 'akamai',
+    path: '/',
     domains : ["media.graphassets.com"],
+  },
+  experimental: {
+    workerThreads: false,
+    cpus:1
   },
 }
 

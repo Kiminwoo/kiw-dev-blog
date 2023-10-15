@@ -40,6 +40,7 @@ const checkCurPost = (dataPublished)  => {
     return date;
 }
 
+
 export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, dataPublished, slug, tags, postChk }) {
 
     let viewMode = useContext(gViewMode);
@@ -70,7 +71,7 @@ export default function BlogPost({ title, author, coverPhoto, coverPhotoLight, d
                 </Link>
 
                 <CardContent>
-                    
+
                     {
                         checkCurPost(dataPublished) && <NewIcon />
                     }

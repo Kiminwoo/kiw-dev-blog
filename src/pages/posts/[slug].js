@@ -155,7 +155,7 @@ export default function BlogPost({ post }) {
                           src={childHtml.rawAttributes.src}
                           alt={childHtml.rawAttributes.alt}
                           style={contentImg}
-                          sizes='300px'
+                          sizes='1200px'
                         />
                       </div>
                     </Fragment>
