@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 // import SpringScrollbars from '@/SpringScrollbars.js';
 import { GraphQLClient, gql } from 'graphql-request';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState , useRef} from 'react';
 
 // import BlogCard from '../../components/BlogCard.jsx';
 // import HeaderBar from '../../components/HeaderBar.jsx';
@@ -20,7 +20,7 @@ const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z0
 const QUERY = gql`
 
   {
-    posts{
+    posts(orderBy: publishedAt_DESC){
       id,
       title,
       dataPublished,
@@ -49,11 +49,6 @@ const QUERY = gql`
 export async function getStaticProps() {
   const { posts } = await graphcms.request(QUERY);
 
-  // 최신 내용 정렬
-  posts.sort(function (a, b) {
-    return new Date(b.dataPublished) - new Date(a.dataPublished);
-  })
-
   return {
 
     props: {
@@ -68,9 +63,34 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
 
   const [postState, setPostState] = useState({ posts });
+  const [loading , setLoading] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+  const bottom = useRef(null);
+  const delay = 10000;
 
   useEffect(() => {
     getPostDate(postState);
+    
+    const observer = new IntersectionObserver((entries)=>{
+    
+    if(entries[0].isIntersecting){
+      async function fetchMorePosts(){
+        setLoading(true);
+        setTimeout(()=> setShowLoading(true),delay);
+
+        setLoading(false);
+        setShowLoading(false);
+
+        
+        const { posts } = await graphcms.request(QUERY);
+
+        console.log(`${posts}`)
+
+      }
+      fetchMorePosts();
+    }
+    });
+    observer.observe(bottom.current);
   })
 
   const getPostDate = (postState) => {
@@ -123,7 +143,14 @@ export default function Home({ posts }) {
                   />
                 </Fragment>  
           }
-
+          {
+            loading && (
+              <div style={{opacity: showLoading ? 1 : 0}}>
+                Loading ... 
+              </div>
+            )
+          }
+          <div ref={bottom}/>
         </main>
       </div>
     </SpringScrollbars>
