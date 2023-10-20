@@ -62,17 +62,32 @@ export async function getStaticProps() {
 
 export default function Home({ posts }) {
 
-  const [postState, setPostState] = useState({ posts });
+  // 현재 페이지 
+  let currentPage = 1;
+  // 페이지당 포스트 개수 
+  const postsPerPage = 9;
+  // 마지막 포스트 인덱스 주소 
+  let indexOfLastPost = currentPage * postsPerPage;
+  // 처음 포스트 인덱스 주소 
+  let indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // 포스트 페이징 배열 
+  let postsObjArr  = {"posts" : posts.slice(indexOfFirstPost,indexOfLastPost)};
+  // 포스트 총 개수
+  const totalPosts = posts.length;
+  const [postState, setPostState] = useState(postsObjArr);
   const [loading , setLoading] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
+
   const bottom = useRef(null);
   const delay = 10000;
 
   useEffect(() => {
+    
     getPostDate(postState);
     
     const observer = new IntersectionObserver((entries)=>{
     
+    // 사용자가 마우스 드래그를 맨 밑으로 내렸을 경우 
     if(entries[0].isIntersecting){
       async function fetchMorePosts(){
         setLoading(true);
@@ -81,17 +96,27 @@ export default function Home({ posts }) {
         setLoading(false);
         setShowLoading(false);
 
-        
-        const { posts } = await graphcms.request(QUERY);
+        // 현재 가지고 있는 포스트의 총 개수가 더 클 경우
+        if(totalPosts >= indexOfLastPost){
+          ++currentPage;
+          indexOfLastPost = currentPage * postsPerPage;
+          indexOfFirstPost = indexOfLastPost - postsPerPage;
+          
+          let pagingPosts = posts.slice(indexOfFirstPost,indexOfLastPost);
 
-        console.log(`${posts}`)
+          pagingPosts.map(postItem=>{
+            setPostState({"posts" : [...postState.posts , postItem]})
+          })
 
+        } else { // 현재 가지고 있는 포스트의 총 개수가 더 작을 경우
+
+        }
       }
       fetchMorePosts();
     }
     });
     observer.observe(bottom.current);
-  })
+  },[])
 
   const getPostDate = (postState) => {
     setPostState(postState);
