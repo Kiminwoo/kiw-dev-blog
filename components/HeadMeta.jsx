@@ -1,8 +1,7 @@
 import Head from "next/head";
 
 const HeadMeta = ({ title, description, image,curPath }) => {
-    
-    console.log(curPath);
+
     return (
         <Head>
             <title>{title || "dailyBug"}</title>
@@ -16,6 +15,7 @@ const HeadMeta = ({ title, description, image,curPath }) => {
             <meta property="og:type" content="website" />
             <meta property="og:image" content={image} />
             <meta property="og:article:author" content="inwookim" />
+            <meta property="og:url" content={curPath} />
             <meta property="og:site_name" content="dailyBug" />
             <meta property="og:locale" content="ko_KR"/>
             <meta property="og:image:width" content="1200"/>

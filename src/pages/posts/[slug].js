@@ -9,7 +9,7 @@ import { GraphQLClient, gql } from 'graphql-request';
 import { JSDOM } from 'jsdom';
 import Image from 'next/image';
 import parse from 'node-html-parser';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 const CodeBlock = dynamic(() => import('../../../components/CodeBlock.jsx'));
@@ -19,8 +19,8 @@ const HeadMeta = dynamic(() => import('../../../components/HeadMeta.jsx'));
 
 // import CodeBlock from '../../../components/CodeBlock.jsx';
 // import HeadMeta from '../../../components/HeadMeta.jsx';
-import { getWindowSize } from '../../getWindowSize.js';
 import { useLocation } from 'react-router-dom';
+import { getWindowSize } from '../../getWindowSize.js';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -97,7 +97,7 @@ export default function BlogPost({ post }) {
   const domPurify = DOMPurify(window);
 
   let parserHtmlArr;
-
+  let curPath ;
   function parseHtml(htmlStr) {
     let root = parse(htmlStr);
     parserHtmlArr = [...root.childNodes]
@@ -119,14 +119,12 @@ export default function BlogPost({ post }) {
   const imgLoader = ({src,width,quality})=>{
     return `${src}?w=${width}&q=${quality}`;
   }
-
-  const location = useLocation();
   
   return (
     <Fragment>
 
       <div>
-        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url} curPath = {location}></HeadMeta>
+        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url} curPath= {"https://dailybug.vercel.app/posts/"+post.slug} ></HeadMeta>
       </div>
 
       <SpringScrollbars style={{ height: height }}>
