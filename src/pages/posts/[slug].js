@@ -1,7 +1,5 @@
 import dynamic from 'next/dynamic';
 
-// const styles = dynamic(() => import('@/styles/Slug.module.css?after'));
-// const SpringScrollbars = dynamic(() => import('@/SpringScrollbars.js'));
 import SpringScrollbars from '@/SpringScrollbars.js';
 import styles from '@/styles/Slug.module.css?after';
 import DOMPurify from "dompurify";
@@ -11,16 +9,12 @@ import Image from 'next/image';
 import parse from 'node-html-parser';
 import { Fragment, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { getWindowSize } from '../../getWindowSize.js';
 
 const CodeBlock = dynamic(() => import('../../../components/CodeBlock.jsx'));
 const HeadMeta = dynamic(() => import('../../../components/HeadMeta.jsx'));
-// const { getWindowSize } = dynamic(() => import('../../getWindowSize.js'));
-
-
-// import CodeBlock from '../../../components/CodeBlock.jsx';
-// import HeadMeta from '../../../components/HeadMeta.jsx';
-import { useLocation } from 'react-router-dom';
-import { getWindowSize } from '../../getWindowSize.js';
+// const Comment = dynamic(() => import('../../../components/Comments.jsx'));
+import Comment from '../../../components/Comments.jsx';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -65,6 +59,11 @@ const SLUGLIST = gql`
 
 `;
 
+const repo = process.env.COMMENTS_REPO;
+const repoId = process.env.COMMENTS_REPO_ID;
+const category = process.env.COMMENTS_CATEGORY;
+const categoryId = process.env.COMMENTS_CATEGORY_ID;
+
 export async function getStaticPaths() {
   const { posts } = await graphcms.request(SLUGLIST);
   return {
@@ -97,7 +96,7 @@ export default function BlogPost({ post }) {
   const domPurify = DOMPurify(window);
 
   let parserHtmlArr;
-  let curPath ;
+  let curPath;
   function parseHtml(htmlStr) {
     let root = parse(htmlStr);
     parserHtmlArr = [...root.childNodes]
@@ -113,18 +112,18 @@ export default function BlogPost({ post }) {
 
   const avatarImg = {
     height: "36px",
-    width : "36px"
+    width: "36px"
   }
 
-  const imgLoader = ({src,width,quality})=>{
+  const imgLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality}`;
   }
-  
+
   return (
     <Fragment>
 
       <div>
-        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url} curPath= {"https://dailybug.vercel.app/posts/"+post.slug} ></HeadMeta>
+        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url} curPath={"https://dailybug.vercel.app/posts/" + post.slug} ></HeadMeta>
       </div>
 
       <SpringScrollbars style={{ height: height }}>
@@ -141,13 +140,13 @@ export default function BlogPost({ post }) {
             {
 
               parserHtmlArr.map((childHtml, idx) => {
-                
+
                 // img 태그의 Image 컴포넌트의 style 
                 const contentImg = {
                   width: '100%',
                   height: '100%',
                 }
-                
+
                 // image 태그일 경우 next/Image 를 통한 이미지 최적화
                 if (childHtml.tagName == "IMG") {
                   return (
@@ -185,7 +184,7 @@ export default function BlogPost({ post }) {
                 }
 
                 // 코드 블럭일 경우
-                else { 
+                else {
                   return (
                     <Fragment key={"codeBlock" + idx}>
                       <CodeBlock code={childHtml.outerHTML} language="javascript" />
@@ -199,7 +198,7 @@ export default function BlogPost({ post }) {
           </div>
 
           <div className={styles.authorArea}>
-            
+
             <Image
               width={100}
               height={100}
@@ -217,6 +216,9 @@ export default function BlogPost({ post }) {
             </div>
             <h6 className={styles.date}>{post.dataPublished}</h6>
           </div>
+
+          <Comment repo={repo} repoId={repoId} category={category} categoryId={categoryId} />
+
         </main>
 
       </SpringScrollbars>
