@@ -131,7 +131,7 @@ export default function Home({ posts }) {
       <div className={styles.grid}>
 
         <Head>
-          <title>daliyBug</title>
+          <title>dailyBug</title>
           <meta name="description" content="버그 없는 세상에서 살고 싶다." />
           <meta name="author" content="inwookim" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />

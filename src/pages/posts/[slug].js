@@ -20,7 +20,7 @@ const HeadMeta = dynamic(() => import('../../../components/HeadMeta.jsx'));
 // import CodeBlock from '../../../components/CodeBlock.jsx';
 // import HeadMeta from '../../../components/HeadMeta.jsx';
 import { getWindowSize } from '../../getWindowSize.js';
-
+import { useLocation } from 'react-router-dom';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 
@@ -120,11 +120,13 @@ export default function BlogPost({ post }) {
     return `${src}?w=${width}&q=${quality}`;
   }
 
+  const location = useLocation();
+  
   return (
     <Fragment>
 
       <div>
-        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url}></HeadMeta>
+        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url} curPath = {location}></HeadMeta>
       </div>
 
       <SpringScrollbars style={{ height: height }}>
