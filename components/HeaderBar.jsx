@@ -279,6 +279,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 }}
                 className={styles.typographyFont}
                 onClick={handleCloseNavMenu}
+                
               >
                 dailyBug
               </Typography>
