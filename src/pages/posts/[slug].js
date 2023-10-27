@@ -62,7 +62,7 @@ const SLUGLIST = gql`
 const repo = process.env.COMMENTS_REPO;
 const repoId = process.env.COMMENTS_REPO_ID;
 const category = process.env.COMMENTS_CATEGORY;
-const categoryId = process.env.COMMENTS_CATEGORY_ID;
+const categoryId = process.env.COMMENT_CATEGORY_ID;
 
 export async function getStaticPaths() {
   const { posts } = await graphcms.request(SLUGLIST);

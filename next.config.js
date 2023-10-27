@@ -25,8 +25,8 @@ const nextDefaultConfig = {
   env : {
     COMMENTS_REPO: "Kiminwoo/kiw-dev-blog",
     COMMENTS_REPO_ID : "R_kgDOJLbJkA",
-    COMMENTS_CATEGORY: 'Q&A',
-		COMMENT_CATEGORY_ID: 'DIC_kwDOJLbJkM4CabRf',
+    COMMENTS_CATEGORY: 'Comments',
+		COMMENT_CATEGORY_ID: 'DIC_kwDOJLbJkM4CafOl',
   },
 }
 
