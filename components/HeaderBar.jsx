@@ -22,7 +22,7 @@ import { gViewMode, setGViewMode } from '@/pages/_app';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const pages = ['JS','REACT','NEXT'];
+const pages = ['Home','JS','REACT','NEXT'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar({ postList, getPostDate }) {
@@ -63,8 +63,10 @@ function ResponsiveAppBar({ postList, getPostDate }) {
   const handleCloseNavMenu = (event) => {
     setAnchorElNav(null);
 
-    const clickedTag = postList.posts.filter((post) => {
-      return post.slug.toLowerCase().includes(event.currentTarget.textContent.toLowerCase()+"-");
+    let clickedTag = postList.posts.filter((post) => {
+
+      return post.slug.toLowerCase().includes(event.currentTarget.textContent === "Home" || event.currentTarget.textContent === "dailyBug"? 
+                ""  : event.currentTarget.textContent.toLowerCase()+"-");
     });
 
     getPostDate({ "posts": clickedTag });
@@ -201,7 +203,6 @@ function ResponsiveAppBar({ postList, getPostDate }) {
               variant="h6"
               noWrap
               component="a"
-              href="/"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -212,6 +213,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 textDecoration: 'none',
               }}
               className={styles.typographyFont}
+              onClick={handleCloseNavMenu}
             >
               dailyBug
             </Typography>
@@ -265,7 +267,6 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 variant="h5"
                 noWrap
                 component="a"
-                href=""
                 sx={{
                   mr: 2,
                   display: { xs: 'flex', md: 'none' },
@@ -277,6 +278,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                   textDecoration: 'none',
                 }}
                 className={styles.typographyFont}
+                onClick={handleCloseNavMenu}
               >
                 dailyBug
               </Typography>
@@ -284,6 +286,9 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
+
+                page != "Home" ? 
+
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -292,6 +297,9 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 >
                   {page}
                 </Button>
+                
+                :
+                ""
               ))}
             </Box>
 
