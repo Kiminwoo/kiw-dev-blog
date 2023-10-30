@@ -156,6 +156,8 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
   const handleSearchChange = (prop) => (event) => {
 
+    console.log(`onkeyDown event!`)
+
     if (event.key === 'Enter') {
 
       const searched = postList.posts.filter((post) => {
@@ -185,10 +187,22 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
   useEffect(() => {
     window.addEventListener("keydown", keyDown);
-    // return () => {
-    //   window.addEventListener("keydown", keyDown);
-    // }
+    
+    setTimeout(() => {
+
+      if(searchInput.current){
+        searchInput.current.focus();
+      }
+    }, 100);
+
   }, []);
+
+  const handleFocus = () => {
+    if (searchInput.current) {
+      console.log("handle focus");
+      searchInput.current.click();
+    }
+  };
 
   return (
 
@@ -322,9 +336,15 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
-                  <StyledInputBase placeholder="Search" inputProps={{ 'aria-label': 'search' }} onKeyDown={handleSearchChange("searchItem")} ref={searchInput} >
-                  </StyledInputBase>
-
+                  <StyledInputBase
+                    id="searchInput"
+                    key="searchKey"
+                    placeholder="Search" 
+                    inputProps={{ 'aria-label': 'search' }} 
+                    onKeyDown={handleSearchChange("searchItem")} 
+                    ref={searchInput}       
+                  />
+                  
                   <Paper elevation={1} square={false} sx={{
                     position: 'absolute',
                     float: 'right',

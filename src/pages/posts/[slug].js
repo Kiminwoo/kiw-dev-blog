@@ -13,7 +13,7 @@ import { getWindowSize } from '../../getWindowSize.js';
 
 const CodeBlock = dynamic(() => import('../../../components/CodeBlock.jsx'));
 const HeadMeta = dynamic(() => import('../../../components/HeadMeta.jsx'));
-// const Comment = dynamic(() => import('../../../components/Comments.jsx'));
+
 import Comment from '../../../components/Comments.jsx';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
