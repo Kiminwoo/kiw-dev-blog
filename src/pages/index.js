@@ -44,6 +44,11 @@ const QUERY = gql`
 export async function getStaticProps() {
   const { posts } = await graphcms.request(QUERY);
 
+  // 최신 내용 정렬
+  posts.sort(function (a, b) {
+    return new Date(b.dataPublished) - new Date(a.dataPublished);
+  })
+
   return {
 
     props: {
