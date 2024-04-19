@@ -20,6 +20,7 @@ const QUERY = gql`
       title,
       dataPublished,
       slug,
+      subject,
       tags,
       content {
         html

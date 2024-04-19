@@ -22,7 +22,7 @@ import { gViewMode, setGViewMode } from '@/pages/_app';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const pages = ['Home','JS','REACT','NEXT'];
+const pages = ['HOME','FRONT-END','BACK-END'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar({ postList, getPostDate }) {
@@ -65,10 +65,10 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
     let clickedTag = postList.posts.filter((post) => {
 
-      return post.slug.toLowerCase().includes(event.currentTarget.textContent === "Home" || event.currentTarget.textContent === "dailyBug"? 
-                ""  : event.currentTarget.textContent.toLowerCase()+"-");
+      return event.currentTarget.textContent.toLowerCase().includes(event.currentTarget.textContent === "HOME" || event.currentTarget.textContent === "dailyBug"? 
+                ""  : post.subject.toLowerCase());
     });
-
+    console.log(clickedTag);
     getPostDate({ "posts": clickedTag });
 
   };
@@ -302,7 +302,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
 
-                page != "Home" ? 
+                page != "HOME" ? 
 
                 <Button
                   key={page}
