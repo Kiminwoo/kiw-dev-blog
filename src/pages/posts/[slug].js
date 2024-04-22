@@ -187,7 +187,7 @@ export default function BlogPost({ post }) {
                 else {
                   return (
                     <Fragment key={"codeBlock" + idx}>
-                      <CodeBlock code={childHtml.outerHTML} language="javascript" />
+                      <CodeBlock code={childHtml.outerHTML.replaceAll("<em>","").replaceAll("</em>","")} language="javascript" />
                     </Fragment>
                   )
                 }
