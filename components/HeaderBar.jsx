@@ -55,9 +55,14 @@ function ResponsiveAppBar({ postList, getPostDate }) {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+
+  const closeNavMenu = (event) => {
+    setAnchorElNav(null);
+  }
 
   // app bar 내에서 MenuItem 클릭시 
   const handleCloseNavMenu = (event) => {
@@ -68,13 +73,12 @@ function ResponsiveAppBar({ postList, getPostDate }) {
       return event.currentTarget.textContent.toLowerCase().includes(event.currentTarget.textContent === "HOME" || event.currentTarget.textContent === "dailyBug"? 
                 ""  : post.subject.toLowerCase());
     });
-    console.log(clickedTag);
-    getPostDate({ "posts": clickedTag });
 
+    getPostDate({ "posts": clickedTag });
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleCloseUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
 
   let theme = createTheme({
@@ -212,7 +216,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
       <AppBar position="fixed" disablegutters="true" >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
             <Typography
               variant="h6"
               noWrap
@@ -256,7 +260,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                   horizontal: 'left',
                 }}
                 open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+                onClose={closeNavMenu}
                 sx={{
                   display: { xs: 'block', md: 'none' },
                 }}
@@ -270,8 +274,8 @@ function ResponsiveAppBar({ postList, getPostDate }) {
             </Box>
 
             {
-              !isMobile &&
-              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              // !isMobile &&
+              // <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             }
 
             {
