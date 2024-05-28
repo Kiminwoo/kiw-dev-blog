@@ -70,7 +70,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
 
     let clickedTag = postList.posts.filter((post) => {
 
-      return event.currentTarget.textContent.toLowerCase().includes(event.currentTarget.textContent === "HOME" || event.currentTarget.textContent === "dailyBug"? 
+      return event.currentTarget.textContent.toLowerCase().includes(event.currentTarget.textContent === "HOME" || event.currentTarget.textContent === "ITgrow"? 
                 ""  : post.subject.toLowerCase());
     });
 
@@ -233,7 +233,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
               className={styles.typographyFont}
               onClick={handleCloseNavMenu}
             >
-              dailyBug
+              ITgrow
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -299,7 +299,7 @@ function ResponsiveAppBar({ postList, getPostDate }) {
                 onClick={handleCloseNavMenu}
                 
               >
-                dailyBug
+                ITgrow
               </Typography>
             }
 

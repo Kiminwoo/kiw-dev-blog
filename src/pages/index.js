@@ -132,13 +132,13 @@ export default function Home({ posts }) {
       <div className={styles.grid}>
 
         <Head>
-          <title>dailyBug</title>
+          <title>ITgrow</title>
           <meta name="description" content="버그 없는 세상에서 살고 싶다." />
           <meta name="author" content="inwookim" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta property="og:image" content="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory2.daumcdn.net%2Ftistory%2F2899385%2Fattach%2F3c560e9b7b7c4d6fb3eefa0a05a944fb" />
+          <meta property="og:image" content="https://tistory1.daumcdn.net/tistory/2899385/attach/8fd0a3a1510240589fa281426f2ba218" />
           <meta property="og:title" content="버그 없는 세상에서 살고 싶다." />
-          <link rel="shortcut icon" href="https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory3.daumcdn.net%2Ftistory%2F2899385%2Fattach%2F3c560e9b7b7c4d6fb3eefa0a05a944fb" />
+          <link rel="shortcut icon" href="https://tistory1.daumcdn.net/tistory/2899385/attach/8fd0a3a1510240589fa281426f2ba218" />
         </Head>
 
         <HeaderBar postList={{ posts }} getPostDate={getPostDate} />
