@@ -123,7 +123,7 @@ export default function BlogPost({ post }) {
     <Fragment>
 
       <div>
-        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url} curPath={"https://dailybug.vercel.app/posts/" + post.slug} ></HeadMeta>
+        <HeadMeta title={post.title} description={post.content.html.replaceAll("<p></p>", "<br/>").replaceAll(/<[^>]*>?/g, '')} image={post.coverPhoto.url} curPath={"https://itgrow.vercel.app/posts/" + post.slug} ></HeadMeta>
       </div>
 
       <SpringScrollbars style={{ height: height }}>

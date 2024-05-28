@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://dailybug.vercel.app/',
+    siteUrl: 'https://itgrow.vercel.app/',
     changefreq: 'daily',
     priority: 0.7,
     sitemapSize: 7000,
