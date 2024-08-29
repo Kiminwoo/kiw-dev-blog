@@ -3,10 +3,11 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { Fragment, useEffect, useState, useRef } from 'react';
 
-import styles from './index.module.css?after';
 import { useWindowSize } from '@hooks/useWindowSize'; // Hook을 가져오는 경로에 맞게 수정
 
-const BlogCard = dynamic(() => import('@components/ui/BlogCard.jsx'));
+import styles from './index.module.css?after';
+
+const BlogCard = dynamic(() => import('@components/common/BlogCard.jsx'));
 const HeaderBar = dynamic(() => import('@components/common/HeaderBar.jsx'));
 const SpringScrollbars = dynamic(
   () => import('@components/common/SpringScrollbars.jsx')

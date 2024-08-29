@@ -1,43 +1,21 @@
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import styles from './BlogCard.module.css?after';
-
-import { gViewMode } from '@pages/_app';
+// BlogPost 컴포넌트 파일
 import { Avatar } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { useContext, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { useContext } from 'react';
 
-const NewIcon = dynamic(() => import('./NewIcon.jsx'));
-const PostTags = dynamic(() => import('./PostTags.jsx'));
+// 커스텀 Hook import
+import { gViewMode } from '@pages/_app';
 
-/**
- * 포스팅된 날짜와 현재 날짜를 구별하여 최신 포스트 여부 판단 (3일이상 지난 포스팅은 최신 포스트로 간주하지 않음)
- * @param {string} dataPublished - 포스트된 날짜
- * @return {boolean} - true : 최신 포스트 , false : 최신이 아닌 포스트
- */
-const checkCurPost = (dataPublished) => {
-  const [date, setDate] = useState();
+import useCheckCurPost from '@hooks/useCheckCurPost'; // hooks 폴더의 경로에 맞게 import
 
-  let publishedDay = dataPublished.split('-');
+import styles from './BlogCard.module.css?after';
 
-  useEffect(() => {
-    const today = new Date();
-
-    if (
-      String(today.getFullYear()) === publishedDay[0] &&
-      String(today.getMonth() + 1) === publishedDay[1] &&
-      Number(today.getDate()) - Number(publishedDay[2]) < 4
-    ) {
-      setDate(true);
-    } else {
-      setDate(false);
-    }
-  });
-
-  return date;
-};
+const NewIcon = dynamic(() => import('../ui/NewIcon.jsx'));
+const PostTags = dynamic(() => import('../ui/PostTags.jsx'));
 
 export default function BlogPost({
   title,
@@ -49,7 +27,8 @@ export default function BlogPost({
   tags,
   postChk,
 }) {
-  let viewMode = useContext(gViewMode);
+  const viewMode = useContext(gViewMode);
+  const isRecentPost = useCheckCurPost(dataPublished); // 커스텀 Hook 호출
 
   if (postChk == 'none') {
     return (
@@ -72,14 +51,12 @@ export default function BlogPost({
         </Link>
 
         <CardContent>
-          {checkCurPost(dataPublished) && <NewIcon />}
-
+          {isRecentPost && <NewIcon />}{' '}
+          {/* 최신 포스트 여부에 따라 NewIcon 렌더링 */}
           <Typography gutterBottom variant="h4" component="div">
             <div className={styles.cardContentText}>{title}</div>
           </Typography>
-
           <PostTags tags={tags} />
-
           <div className={styles.cardContentBottom}>
             <div className={styles.cardContentBottomArea}>
               <div className={styles.cardContentBottomLeft}>

@@ -7,12 +7,14 @@ import parse from 'node-html-parser';
 import { Fragment, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
-import styles from './Slug.module.css?after';
 import SpringScrollbars from '@components/common/SpringScrollbars.jsx';
 const CodeBlock = dynamic(() => import('@components/common/CodeBlock.jsx'));
 const HeadMeta = dynamic(() => import('@components/common/HeadMeta.jsx'));
 import Comment from '@components/ui/Comments.jsx';
+
 import { useWindowSize } from '@hooks/useWindowSize'; // Hook을 가져오는 경로에 맞게 수정
+
+import styles from './Slug.module.css?after';
 
 const graphcms = new GraphQLClient(
   'https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master'
