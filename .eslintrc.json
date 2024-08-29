@@ -17,7 +17,23 @@
           "caseInsensitive": true // 대소문자 구분 없이 정렬
         }
       }
-    ]
+    ], 
 
+    "import/no-unresolved": [2, { "ignore": ["\\?.*"] }]
+  }, 
+
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@styles", "./src/styles"],
+          ["@components", "./src/components"],
+          ["@pages", "./src/pages"],
+          ["@assets", "./src/assets"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
+      }
+    }
   }
+
 }
