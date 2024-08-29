@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
-
-import SpringScrollbars from '@/SpringScrollbars.js';
-import styles from '@/styles/Slug.module.css?after';
+import SpringScrollbars from '../../SpringScrollbars.js';
+import styles from './Slug.module.css?after';
 import DOMPurify from "dompurify";
 import { GraphQLClient, gql } from 'graphql-request';
 import { JSDOM } from 'jsdom';
@@ -11,10 +10,10 @@ import { Fragment, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { getWindowSize } from '../../getWindowSize.js';
 
-const CodeBlock = dynamic(() => import('../../../components/CodeBlock.jsx'));
-const HeadMeta = dynamic(() => import('../../../components/HeadMeta.jsx'));
+const CodeBlock = dynamic(() => import('@components/common/CodeBlock.jsx'));
+const HeadMeta = dynamic(() => import('@components/common/HeadMeta.jsx'));
 
-import Comment from '../../../components/Comments.jsx';
+import Comment from '@components/ui/Comments.jsx';
 
 const graphcms = new GraphQLClient("https://api-us-west-2.hygraph.com/v2/clfp7z09m0wx401t9998xduvp/master");
 

@@ -1,6 +1,6 @@
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import styles from '../src/styles/BlogCard.module.css?after';
+import styles from './BlogCard.module.css?after';
 import { Fragment } from 'react';
 
 export default function PostTags({tags}){

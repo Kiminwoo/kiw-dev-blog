@@ -166,7 +166,7 @@ a {
   font-family: "googleSigmar";
   font-style: normal;
   font-weight: 400;
-  src: url("../assets/Sigmar/Sigmar-Regular.ttf");
+  src: url("/Sigmar/Sigmar-Regular.ttf");
   font-display: swap;
 }
 
@@ -174,7 +174,15 @@ a {
   font-family: "googleChivoMono";
   font-style: normal;
   font-weight: 100;
-  src: url("../assets/Chivo_Mono/ChivoMono-VariableFont_wght.ttf");
+  src: url("/Chivo_Mono/ChivoMono-VariableFont_wght.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "googleBlackHanSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/Black_Han_Sans/BlackHanSans-Regular.ttf");
   font-display: swap;
 }
 
@@ -186,10 +194,3 @@ a {
   font-display: swap;
 }
 
-@font-face {
-  font-family: "googleBlackHanSans";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../assets/Black_Han_Sans/BlackHanSans-Regular.ttf");
-  font-display: swap;
-}

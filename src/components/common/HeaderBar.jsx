@@ -17,8 +17,8 @@ import { grey } from '@mui/material/colors';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from 'react-responsive';
-import styles from '../src/styles/Header.module.css?after';
-import { gViewMode, setGViewMode } from '@/pages/_app';
+import styles from './HeaderBar.module.css?after';
+import { gViewMode, setGViewMode } from '@pages/_app';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

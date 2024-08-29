@@ -1,5 +1,5 @@
 import {MdFiberNew} from"react-icons/md";
-import styles from '../src/styles/BlogCard.module.css?after';
+import styles from './BlogCard.module.css?after';
 
 export default function NewIcon(){
 

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import styles from '../src/styles/BlogCard.module.css?after';
+import styles from './BlogCard.module.css?after';
 
-import { gViewMode } from '@/pages/_app';
+import { gViewMode } from '@pages/_app';
 import { Avatar } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
