@@ -4,16 +4,16 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-  --font-googleBlackHanSans : "googleBlackHanSans";
-  --font-googleSigmar:"googleSigmar";
-  --font-googleChivoMono: "googleChivoMono";
-  --font-GmarketSansMedium : "GmarketSansMedium";
-  --font-color:'rgb(0,0,0)';
+  --font-googleBlackHanSans: 'googleBlackHanSans';
+  --font-googleSigmar: 'googleSigmar';
+  --font-googleChivoMono: 'googleChivoMono';
+  --font-GmarketSansMedium: 'GmarketSansMedium';
+  --font-color: 'rgb(0,0,0)';
 
   --foreground-rgb: 0, 0, 0;
   /* --background-start-rgb: 214, 219, 220; */
   --background-end-rgb: 255, 255, 255;
-  --background-code:'rgb(250,251,255)';
+  --background-code: 'rgb(250,251,255)';
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -45,28 +45,28 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 
-  --content-a-nav: rgb(0,0,255);
-  
+  --content-a-nav: rgb(0, 0, 255);
+
   /* scroll-behavior: smooth; */
 }
 
-:root[color-theme='dark']{
+:root[color-theme='dark'] {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
   --background-blockquote: rgb(87, 86, 86);
-  --background-code: rgb(0,0,0);
-  --content-a-nav: rgb(204,204,255);
-  --font-color:rgb(255,255,255);
+  --background-code: rgb(0, 0, 0);
+  --content-a-nav: rgb(204, 204, 255);
+  --font-color: rgb(255, 255, 255);
 }
 
-:root[color-theme='light']{
+:root[color-theme='light'] {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
-  --background-blockquote :rgb(238,238,238);
-  --content-a-nav: rgb(0,0,255);
-  --font-color:rgb(0,0,0);
+  --background-blockquote: rgb(238, 238, 238);
+  --content-a-nav: rgb(0, 0, 255);
+  --font-color: rgb(0, 0, 0);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -75,7 +75,7 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
     --background-blockquote: rgb(87, 86, 86);
-    --background-code: rgb(0,0,0);
+    --background-code: rgb(0, 0, 0);
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
       to bottom right,
@@ -101,8 +101,8 @@
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
 
-    --content-a-nav: rgb(204,204,255);
-    --font-color:rgb(255,255,255);
+    --content-a-nav: rgb(204, 204, 255);
+    --font-color: rgb(255, 255, 255);
   }
 }
 
@@ -111,13 +111,11 @@
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 255, 255, 255;
     --background-end-rgb: 255, 255, 255;
-    --background-blockquote :rgb(238,238,238);
-    --content-a-nav: rgb(0,0,255);
-    --font-color:rgb(0,0,0);
+    --background-blockquote: rgb(238, 238, 238);
+    --content-a-nav: rgb(0, 0, 255);
+    --font-color: rgb(0, 0, 0);
   }
 }
-
-
 
 * {
   box-sizing: border-box;
@@ -131,7 +129,7 @@ body {
   /* overflow-x: hidden; */
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 
@@ -163,34 +161,34 @@ a {
 }
 
 @font-face {
-  font-family: "googleSigmar";
+  font-family: 'googleSigmar';
   font-style: normal;
   font-weight: 400;
-  src: url("/Sigmar/Sigmar-Regular.ttf");
+  src: url('/Sigmar/Sigmar-Regular.ttf');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "googleChivoMono";
+  font-family: 'googleChivoMono';
   font-style: normal;
   font-weight: 100;
-  src: url("/Chivo_Mono/ChivoMono-VariableFont_wght.ttf");
+  src: url('/Chivo_Mono/ChivoMono-VariableFont_wght.ttf');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "googleBlackHanSans";
+  font-family: 'googleBlackHanSans';
   font-style: normal;
   font-weight: 400;
-  src: url("/Black_Han_Sans/BlackHanSans-Regular.ttf");
+  src: url('/Black_Han_Sans/BlackHanSans-Regular.ttf');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'GmarketSansMedium';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-

@@ -1,5 +1,5 @@
-.typographyFont{
-    font-family: var(--font-googleBlackHanSans) !important;
-    font-weight: 400;
-    cursor: pointer;
+.typographyFont {
+  font-family: var(--font-googleBlackHanSans) !important;
+  font-weight: 400;
+  cursor: pointer;
 }
