@@ -1,3 +1,23 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "prettier", "plugin:import/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["builtin", "external"], // 기본 모듈(Node.js 내장 모듈)과 외부 모듈을 함께 정렬
+          ["internal", "parent", "sibling", "index"] // 내부 모듈, 부모 모듈, 형제 모듈, 인덱스 파일 순
+        ],
+        "newlines-between": "always", // 그룹 사이에 항상 빈 줄 추가
+        "alphabetize": {
+          "order": "asc", // 알파벳 순서로 정렬
+          "caseInsensitive": true // 대소문자 구분 없이 정렬
+        }
+      }
+    ]
+
+  }
 }
