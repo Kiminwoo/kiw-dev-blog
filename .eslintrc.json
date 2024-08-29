@@ -17,10 +17,10 @@
           "caseInsensitive": true // 대소문자 구분 없이 정렬
         }
       }
-    ], 
+    ],
 
     "import/no-unresolved": [2, { "ignore": ["\\?.*"] }]
-  }, 
+  },
 
   "settings": {
     "import/resolver": {
@@ -29,11 +29,11 @@
           ["@styles", "./src/styles"],
           ["@components", "./src/components"],
           ["@pages", "./src/pages"],
-          ["@assets", "./src/assets"]
+          ["@assets", "./src/assets"],
+          ["@hooks", "./src/hooks"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
       }
     }
   }
-
 }
