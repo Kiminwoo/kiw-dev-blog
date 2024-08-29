@@ -1,26 +1,32 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { grey } from '@mui/material/colors';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { alpha, styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import {
+  alpha,
+  styled,
+  createTheme,
+  ThemeProvider,
+} from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef, useState, useContext } from 'react';
-import { grey } from '@mui/material/colors';
-import Paper from '@mui/material/Paper';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from 'react-responsive';
-import styles from './HeaderBar.module.css?after';
-import { gViewMode, setGViewMode } from '@pages/_app';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { gViewMode, setGViewMode } from '@pages/_app';
+
+import styles from './HeaderBar.module.css?after';
 
 const pages = ['HOME', 'FRONT-END', 'BACK-END'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
