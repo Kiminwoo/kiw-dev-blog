@@ -53,22 +53,24 @@
 
 | 기술 스택                        | 버전     | 설명                                                             |
 |---------------------------------|----------|----------------------------------------------------------------|
-| <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">  | v18.2.0  | 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리              |
-| <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next.js&logoColor=white">  | v13.2.4  | 서버 사이드 렌더링과 정적 사이트 생성을 위한 React 프레임워크          |
-| <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&logo=graphql&logoColor=white">  | v16.6.0  | 데이터 쿼리를 위한 언어 및 런타임                                    |
-| <img src="https://img.shields.io/badge/graphql--request-0D9DF3?style=for-the-badge&logo=graphql&logoColor=white">  | v5.2.0  | GraphQL 클라이언트 라이브러리                                        |
-| <img src="https://img.shields.io/badge/dompurify-3B5998?style=for-the-badge&logo=purify&logoColor=white">  | v3.0.6   | HTML을 정화하기 위한 보안 라이브러리                                  |
-| <img src="https://img.shields.io/badge/jsdom-3B5998?style=for-the-badge&logo=html5&logoColor=white">  | v22.1.0  | 서버 사이드 렌더링을 위한 DOM 구현 라이브러리                         |
-| <img src="https://img.shields.io/badge/react--responsive-61DAFB?style=for-the-badge&logo=react&logoColor=black">  | v9.0.2  | 반응형 디자인 구현을 위한 라이브러리                                  |
-| <img src="https://img.shields.io/badge/rebound-FF6347?style=for-the-badge&logo=rebound&logoColor=white">  | v0.1.0   | 물리 기반 애니메이션 구현을 위한 JavaScript 라이브러리                |
-| <img src="https://img.shields.io/badge/node--html--parser-43853D?style=for-the-badge&logo=html5&logoColor=white">  | v6.1.10 | Node.js에서 HTML을 파싱하는 라이브러리                               |
-| <img src="https://img.shields.io/badge/prism.js-FFA500?style=for-the-badge&logo=prism&logoColor=white">  | v1.29.0 | 코드 구문 강조를 위한 라이브러리                                    |
-| <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white">  | v8.36.0  | 코드 품질 유지 및 오류 탐지를 위한 도구                               |
-| <img src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black">  | v3.3.3  | 코드 포맷팅 도구                                                    |
-| <img src="https://img.shields.io/badge/fontawesome-528DD7?style=for-the-badge&logo=fontawesome&logoColor=white">  | v6.4.2 | 아이콘 라이브러리                                                   |                                          |
-| <img src="https://img.shields.io/badge/emotion-D36AC2?style=for-the-badge&logo=emotion&logoColor=white"> | v11.10.6 | CSS-in-JS 라이브러리                                                |
-| <img src="https://img.shields.io/badge/material--ui-0081CB?style=for-the-badge&logo=mui&logoColor=white">  | v5.12.0 | React 컴포넌트를 위한 스타일링 라이브러리                             |
-| <img src="https://img.shields.io/badge/rss-FFA500?style=for-the-badge&logo=rss&logoColor=white">  | v1.2.2  | RSS 피드 생성 라이브러리  
+| <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">  | `v18.2.0`  | 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리              |
+| <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next.js&logoColor=white">  | `v13.2.4`  | 서버 사이드 렌더링과 정적 사이트 생성을 위한 React 프레임워크          |
+| <img src="https://img.shields.io/badge/graphql-E10098?style=for-the-badge&logo=graphql&logoColor=white">  | `v16.6.0`  | 데이터 쿼리를 위한 언어 및 런타임                                    |
+| <img src="https://img.shields.io/badge/graphql--request-0D9DF3?style=for-the-badge&logo=graphql&logoColor=white">  | `v5.2.0`  | GraphQL 클라이언트 라이브러리                                        |
+| <img src="https://img.shields.io/badge/dompurify-3B5998?style=for-the-badge&logo=purify&logoColor=white">  | `v3.0.6`   | HTML을 정화하기 위한 보안 라이브러리                                  |
+| <img src="https://img.shields.io/badge/jsdom-3B5998?style=for-the-badge&logo=html5&logoColor=white">  | `v22.1.0`  | 서버 사이드 렌더링을 위한 DOM 구현 라이브러리                         |
+| <img src="https://img.shields.io/badge/react--responsive-61DAFB?style=for-the-badge&logo=react&logoColor=black">  | `v9.0.2`  | 반응형 디자인 구현을 위한 라이브러리                                  |
+| <img src="https://img.shields.io/badge/rebound-FF6347?style=for-the-badge&logo=rebound&logoColor=white">  | `v0.1.0`   | 물리 기반 애니메이션 구현을 위한 JavaScript 라이브러리                |
+| <img src="https://img.shields.io/badge/node--html--parser-43853D?style=for-the-badge&logo=html5&logoColor=white">  | `v6.1.10` | Node.js에서 HTML을 파싱하는 라이브러리                               |
+| <img src="https://img.shields.io/badge/prism.js-FFA500?style=for-the-badge&logo=prism&logoColor=white">  | `v1.29.0` | 코드 구문 강조를 위한 라이브러리
+| ![Husky](https://img.shields.io/badge/husky-273347?style=for-the-badge&logo=git&logoColor=white) | `v8.0.3`        | Husky는 Git 훅을 관리하고 커밋 전에 스크립트를 실행할 수 있도록 도와주는 도구입니다. |
+| ![Lint-staged](https://img.shields.io/badge/lint--staged-4A4A55?style=for-the-badge&logo=git&logoColor=white) | `v13.5.0`       | Lint-staged는 Git에 커밋하기 전에 수정된 파일에 대해서만 린트와 포맷을 수행하도록 도와주는 도구입니다. |
+| <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white">  | `v8.36.0`  | 코드 품질 유지 및 오류 탐지를 위한 도구                               |
+| <img src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black">  | `v3.3.3`  | 코드 포맷팅 도구                                                    |
+| <img src="https://img.shields.io/badge/fontawesome-528DD7?style=for-the-badge&logo=fontawesome&logoColor=white">  | `v6.4.2` | 아이콘 라이브러리                                                   |                                          |
+| <img src="https://img.shields.io/badge/emotion-D36AC2?style=for-the-badge&logo=emotion&logoColor=white"> | `v11.10.6` | CSS-in-JS 라이브러리                                                |
+| <img src="https://img.shields.io/badge/material--ui-0081CB?style=for-the-badge&logo=mui&logoColor=white">  | `v5.12.0` | React 컴포넌트를 위한 스타일링 라이브러리                             |
+| <img src="https://img.shields.io/badge/rss-FFA500?style=for-the-badge&logo=rss&logoColor=white">  | `v1.2.2`  | RSS 피드 생성 라이브러리  
 
 
 ## 🌟 주요 기능
