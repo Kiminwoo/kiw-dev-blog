@@ -14,8 +14,8 @@ import useCheckCurPost from '@hooks/useCheckCurPost'; // hooks 폴더의 경로�
 
 import styles from './BlogCard.module.css?after';
 
-const NewIcon = dynamic(() => import('../ui/NewIcon.jsx'));
-const PostTags = dynamic(() => import('../ui/PostTags.jsx'));
+const NewIcon = dynamic(() => import('../feature/NewIcon.jsx'));
+const PostTags = dynamic(() => import('../feature/PostTags.jsx'));
 
 export default function BlogPost({
   title,

@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 import SpringScrollbars from '@components/common/SpringScrollbars.jsx';
 const CodeBlock = dynamic(() => import('@components/common/CodeBlock.jsx'));
 const HeadMeta = dynamic(() => import('@components/common/HeadMeta.jsx'));
-import Comment from '@components/ui/Comments.jsx';
+import Comment from '@components/feature/Comments.jsx';
 
 import { useWindowSize } from '@hooks/useWindowSize'; // Hook을 가져오는 경로에 맞게 수정
 
