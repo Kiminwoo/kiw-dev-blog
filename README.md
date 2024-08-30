@@ -5,48 +5,68 @@
 ## 📑 프로젝트 구조
 
 ```plaintext
+
 - public/
   - Chivo_Mono/
   - Sigmar/
 - src/
   - assets/
     - fonts/
+    - img/
+      - blog_cover_img/
+      - blog_post_content_img/
   - components/
     - common/
-    - ui/
+    - feature/
   - hooks/
   - pages/
     - _app.js
     - _document.js
     - posts/[slug].js
+  - styles/
+    - globals.css
 - out/
+- .husky/
+  - _(Git hook scripts)
+- .vscode/
+  - settings.json (VSCode settings)
+
 ```
 
 - public/: 정적 파일(예: 폰트, 이미지 등)을 저장하는 폴더입니다. 이 폴더의 파일들은 서버를 통해 직접 제공됩니다.
+
+- Chivo_Mono/, Sigmar/: 프로젝트에서 사용하는 다양한 폰트 파일을 포함한 서브 디렉토리들입니다.
 
 - src/: 소스 파일들이 위치한 메인 디렉토리입니다.
 
 - assets/: 프로젝트의 다양한 정적 자산(예: 이미지, 스타일시트, 폰트 등)을 포함합니다.
 
 - fonts/: 프로젝트에서 사용하는 폰트 파일과 스타일시트가 포함된 폴더입니다.
+- img/: 블로그 이미지 파일이 포함된 폴더입니다.
 
 - components/: 재사용 가능한 UI 컴포넌트를 모아 놓은 디렉토리입니다.
+- common/: 여러 페이지에서 공통으로 사용되는 컴포넌트들이 위치한 폴더입니다.
 
-- common/: 여러 페이지에서 공통으로 사용되는 컴포넌트들이 위치한 폴더입니다. 
+- feature/: 특정 기능과 관련된 컴포넌트들이 위치한 폴더입니다.
 
-- ui/: 사용자 인터페이스 요소와 관련된 컴포넌트들
-
-- hooks/: 커스텀 React Hook을 정의하는 폴더입니다. 
+- hooks/: 커스텀 React Hook을 정의하는 폴더입니다.
 
 - pages/: Next.js에서 제공하는 페이지 라우팅 기능을 위한 디렉토리입니다. Next.js의 파일 기반 라우팅을 구현하며, 각 파일은 해당 경로에 대한 페이지를 정의합니다.
 
-- _app.js: 공통 레이아웃 및 전역 상태 관리를 설정하는 파일입니다.
+- _app.js: 공통 레이아웃 및 전역 상태 관리를 설정하는 
+파일입니다.
 
 - _document.js: HTML 문서의 기본 구조를 설정하는 데 사용되는 파일입니다.
 
 - posts/[slug].js: 동적 라우팅을 통해 각 블로그 게시물의 세부 내용을 보여주는 페이지 파일입니다.
 
+- styles/: 글로벌 스타일시트(globals.css)가 포함된 폴더입니다.
+
 - out/: 정적 빌드 결과물들이 저장되는 디렉토리입니다. Next.js에서 정적 사이트 생성(SSG)이나 서버 측 렌더링(SSR)을 사용하여 생성된 파일들이 위치합니다.
+
+- .husky/: Git hooks를 관리하는 Husky 관련 스크립트가 포함된 디렉토리입니다.
+
+- .vscode/: Visual Studio Code의 프로젝트별 설정 파일을 포함하는 디렉토리입니다.
 
 
 ## 🛠️기술 스택
