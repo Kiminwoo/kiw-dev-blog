@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <meta
           name="naver-site-verification"
-          content="d29c00f5fcb988d62f06fd07804cf8b7719949af"
+          content="81f77500dd8ca6295ac40e38b9456cb53d861d13"
         />
         <meta
           name="google-site-verification"

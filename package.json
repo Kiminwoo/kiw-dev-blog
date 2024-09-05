@@ -9,7 +9,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "vercel-deploy": "next build && next export",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
